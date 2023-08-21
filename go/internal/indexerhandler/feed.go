@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/merlins-labsincubus/go/internal/indexerdb"
-	"github.com/merlins-labsincubus/go/pkg/networks"
+	"github.com/merlins-labs/merlins-dapp/go/internal/indexerdb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/networks"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )

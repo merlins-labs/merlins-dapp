@@ -1,7 +1,7 @@
 package indexerdb
 
 import (
-	"github.com/merlins-labsincubus/go/pkg/networks"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/networks"
 	"gorm.io/datatypes"
 )
 

@@ -47,7 +47,7 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
   -w -s -linkmode=external -extldflags '-Wl,-z,muldefs -static'" \
   -trimpath \
   -o /app/build/ \
-  ./go/cmd/incubus-backend
+  ./go/cmd//merlins-dapp-backend
 
 # --------------------------------------------------------
 # Runner
@@ -55,11 +55,11 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
 
 FROM ${RUNNER_IMAGE}
 
-COPY --from=builder /app/build/incubus-backend /bin/incubus-backend
+COPY --from=builder /app/build//merlins-dapp-backend /bin//merlins-dapp-backend
 
 ENV HOME /app
 WORKDIR $HOME
 
 COPY networks.json $HOME/networks.json
 
-ENTRYPOINT ["incubus-backend"]
+ENTRYPOINT ["/merlins-dapp-backend"]

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/merlins-labsincubus/go/pkg/feed"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/feed"
 	"github.com/go-co-op/gocron"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"

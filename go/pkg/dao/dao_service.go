@@ -3,9 +3,9 @@ package dao
 import (
 	"context"
 
-	"github.com/merlins-labsincubus/go/internal/indexerdb"
-	"github.com/merlins-labsincubus/go/pkg/daopb"
-	"github.com/merlins-labsincubus/go/pkg/networks"
+	"github.com/merlins-labs/merlins-dapp/go/internal/indexerdb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/daopb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/networks"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 	"gorm.io/gorm"

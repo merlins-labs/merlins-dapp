@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/merlins-labsincubus/go/pkg/marketplacepb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/marketplacepb"
 	faker "github.com/bxcodec/faker/v3"
 	"github.com/pkg/errors"
 )

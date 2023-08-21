@@ -9,16 +9,16 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/merlins-labsincubus/go/internal/indexerdb"
-	"github.com/merlins-labsincubus/go/pkg/dao"
-	"github.com/merlins-labsincubus/go/pkg/daopb"
-	"github.com/merlins-labsincubus/go/pkg/feed"
-	"github.com/merlins-labsincubus/go/pkg/feedpb"
-	"github.com/merlins-labsincubus/go/pkg/marketplace"
-	"github.com/merlins-labsincubus/go/pkg/marketplacepb"
-	"github.com/merlins-labsincubus/go/pkg/networks"
-	"github.com/merlins-labsincubus/go/pkg/p2e"
-	"github.com/merlins-labsincubus/go/pkg/p2epb"
+	"github.com/merlins-labs/merlins-dapp/go/internal/indexerdb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/dao"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/daopb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/feed"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/feedpb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/marketplace"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/marketplacepb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/networks"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/p2e"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/p2epb"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"
@@ -27,7 +27,7 @@ import (
 )
 
 func main() {
-	fs := flag.NewFlagSet("incubus-backend", flag.ContinueOnError)
+	fs := flag.NewFlagSet("/merlins-dapp-backend", flag.ContinueOnError)
 	var (
 		enableTls                = flag.Bool("enable_tls", false, "Use TLS - required for HTTP2.")
 		tlsCertFilePath          = flag.String("tls_cert_file", "../../misc/localhost.crt", "Path to the CRT/PEM file.")

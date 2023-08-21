@@ -9,8 +9,8 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/merlins-labsincubus/go/internal/indexerdb"
-	"github.com/merlins-labsincubus/go/pkg/networks"
+	"github.com/merlins-labs/merlins-dapp/go/internal/indexerdb"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/networks"
 	"github.com/go-co-op/gocron"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"

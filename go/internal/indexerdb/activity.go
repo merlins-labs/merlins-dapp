@@ -3,7 +3,7 @@ package indexerdb
 import (
 	"time"
 
-	"github.com/merlins-labsincubus/go/pkg/networks"
+	"github.com/merlins-labs/merlins-dapp/go/pkg/networks"
 )
 
 type ActivityKind string
