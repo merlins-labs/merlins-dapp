@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
-	"github.com/MERLINS/merlins-dapp/go/pkg/contracts/bunker_minter_types"
+	"github.com/merlins-labsincubus/go/internal/indexerdb"
+	"github.com/merlins-labsincubus/go/pkg/contracts/bunker_minter_types"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )

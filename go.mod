@@ -1,4 +1,4 @@
-module github.com/MERLINS/merlins-dapp
+module github.com/merlins-labsincubus
 
 go 1.18
 

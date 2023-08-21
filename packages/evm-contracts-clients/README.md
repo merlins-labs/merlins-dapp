@@ -1,6 +1,6 @@
 ## Generate contract clients for EVM
 
-- Clone the repo `https://github.com/MERLINS/evm-nft-vault`
+- Clone the repo `https://github.com/merlins-labsevm-nft-vault`
 - Set the needed hardhat environment 
 - Compiles the contracts with: `npx hardhat compile`
 - Copy the needed generated files, ex: If the contract name is `MerlinsNft` then we need to:

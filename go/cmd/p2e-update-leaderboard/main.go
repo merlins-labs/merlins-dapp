@@ -9,10 +9,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
-	"github.com/MERLINS/merlins-dapp/go/pkg/contractutil"
-	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
-	"github.com/MERLINS/merlins-dapp/go/pkg/p2e"
+	"github.com/merlins-labsincubus/go/internal/indexerdb"
+	"github.com/merlins-labsincubus/go/pkg/contractutil"
+	"github.com/merlins-labsincubus/go/pkg/networks"
+	"github.com/merlins-labsincubus/go/pkg/p2e"
 	"github.com/go-co-op/gocron"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"

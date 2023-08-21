@@ -10,8 +10,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/MERLINS/merlins-dapp/go/internal/ipfsutil"
-	"github.com/MERLINS/merlins-dapp/go/pkg/pricespb"
+	"github.com/merlins-labsincubus/go/internal/ipfsutil"
+	"github.com/merlins-labsincubus/go/pkg/pricespb"
 	"github.com/allegro/bigcache/v3"
 	"github.com/pkg/errors"
 	abcitypes "github.com/tendermint/tendermint/abci/types"

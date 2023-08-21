@@ -1,7 +1,7 @@
 package indexerdb
 
 import (
-	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
+	"github.com/merlins-labsincubus/go/pkg/networks"
 	"github.com/pkg/errors"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"

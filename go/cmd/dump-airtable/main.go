@@ -4,7 +4,7 @@ import (
 	"flag"
 	"os"
 
-	"github.com/MERLINS/merlins-dapp/go/internal/airtable_fetcher"
+	"github.com/merlins-labsincubus/go/internal/airtable_fetcher"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"

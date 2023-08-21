@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "merlins-dapp",
-    "slug": "merlins-dapp",
+    "name": "incubus",
+    "slug": "incubus",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
-	"github.com/MERLINS/merlins-dapp/go/pkg/feedpb"
+	"github.com/merlins-labsincubus/go/internal/indexerdb"
+	"github.com/merlins-labsincubus/go/pkg/feedpb"
 	"github.com/dgraph-io/ristretto"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"

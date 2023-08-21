@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/merlins-labsincubus/go/internal/indexerdb"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )

@@ -3,7 +3,7 @@ package indexerdb
 import (
 	"database/sql"
 
-	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
+	"github.com/merlins-labsincubus/go/pkg/networks"
 )
 
 type Attribute struct {

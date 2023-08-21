@@ -1,6 +1,6 @@
 package indexerdb
 
-import "github.com/MERLINS/merlins-dapp/go/pkg/networks"
+import "github.com/merlins-labsincubus/go/pkg/networks"
 
 type Quest struct {
 	ID    string

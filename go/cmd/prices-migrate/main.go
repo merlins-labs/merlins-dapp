@@ -5,8 +5,8 @@ import (
 	"flag"
 	"os"
 
-	"github.com/MERLINS/merlins-dapp/go/internal/pgutil"
-	"github.com/MERLINS/merlins-dapp/go/internal/urlutil"
+	"github.com/merlins-labsincubus/go/internal/pgutil"
+	"github.com/merlins-labsincubus/go/internal/urlutil"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"

@@ -7,8 +7,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/MERLINS/merlins-dapp/go/pkg/prices_db"
-	"github.com/MERLINS/merlins-dapp/go/pkg/pricespb"
+	"github.com/merlins-labsincubus/go/pkg/prices_db"
+	"github.com/merlins-labsincubus/go/pkg/pricespb"
 	"github.com/volatiletech/sqlboiler/v4/queries/qm"
 )
 

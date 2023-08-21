@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/MERLINS/merlins-dapp/go/pkg/marketplacepb"
+	"github.com/merlins-labsincubus/go/pkg/marketplacepb"
 	"go.uber.org/zap"
 )
 
