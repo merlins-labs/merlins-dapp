@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { TeritoriBunkerMinterQueryClient } from "../contracts-clients/teritori-bunker-minter/TeritoriBunkerMinter.client";
-import { TeritoriMinter__factory } from "../evm-contracts-clients/teritori-bunker-minter/TeritoriMinter__factory";
+import { MerlinsBunkerMinterQueryClient } from "../contracts-clients/merlins-bunker-minter/MerlinsBunkerMinter.client";
+import { MerlinsMinter__factory } from "../evm-contracts-clients/merlins-bunker-minter/MerlinsMinter__factory";
 import {
   mustGetNonSigningCosmWasmClient,
   parseNetworkObjectId,
@@ -26,7 +26,7 @@ export const useMintEnded = (collectionId: string, enabled: boolean = true) => {
 
         const cosmwasm = await mustGetNonSigningCosmWasmClient(network.id);
 
-        const minterClient = new TeritoriBunkerMinterQueryClient(
+        const minterClient = new MerlinsBunkerMinterQueryClient(
           cosmwasm,
           mintAddress
         );
@@ -42,7 +42,7 @@ export const useMintEnded = (collectionId: string, enabled: boolean = true) => {
           return false;
         }
 
-        const minterClient = TeritoriMinter__factory.connect(
+        const minterClient = MerlinsMinter__factory.connect(
           mintAddress,
           provider
         );

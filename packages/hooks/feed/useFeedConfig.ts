@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { TeritoriSocialFeedQueryClient } from "../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.client";
+import { MerlinsSocialFeedQueryClient } from "../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.client";
 import {
   getCosmosNetwork,
   mustGetNonSigningCosmWasmClient,
@@ -15,7 +15,7 @@ export const useFeedConfig = (networkId: string) => {
         return null;
       }
       const cosmwasmClient = await mustGetNonSigningCosmWasmClient(networkId);
-      const client = new TeritoriSocialFeedQueryClient(
+      const client = new MerlinsSocialFeedQueryClient(
         cosmwasmClient,
         network.socialFeedContractAddress
       );

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { TeritoriBunkerMinterQueryClient } from "../../contracts-clients/teritori-bunker-minter/TeritoriBunkerMinter.client";
+import { MerlinsBunkerMinterQueryClient } from "../../contracts-clients/merlins-bunker-minter/MerlinsBunkerMinter.client";
 import { mustGetNonSigningCosmWasmClient } from "../../networks";
 
 export const useBunkerMinterConfig = (
@@ -18,7 +18,7 @@ export const useBunkerMinterConfig = (
         return undefined;
       }
       const cosmwasm = await mustGetNonSigningCosmWasmClient(networkId);
-      const minterClient = new TeritoriBunkerMinterQueryClient(
+      const minterClient = new MerlinsBunkerMinterQueryClient(
         cosmwasm,
         contractAddress
       );

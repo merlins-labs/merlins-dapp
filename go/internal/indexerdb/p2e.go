@@ -1,6 +1,6 @@
 package indexerdb
 
-import "github.com/TERITORI/teritori-dapp/go/pkg/networks"
+import "github.com/MERLINS/merlins-dapp/go/pkg/networks"
 
 // Delete the record when user unstake
 type P2eSquadStaking struct {

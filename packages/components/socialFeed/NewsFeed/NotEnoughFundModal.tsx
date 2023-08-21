@@ -43,7 +43,7 @@ export const NotEnoughFundModal: React.FC<TNotEnoughFundModalProps> = ({
       visible={visible}
       onClose={onClose}
       width={457}
-      label="Do something to get $tori"
+      label="Do something to get $fury"
     >
       <View
         style={{
@@ -75,12 +75,12 @@ export const NotEnoughFundModal: React.FC<TNotEnoughFundModalProps> = ({
           <SVG source={priceSVG} height={24} width={24} color={redDefault} />
         </View>
         <View>
-          <BrandText style={[fontSemibold13]}>Not enough $tori</BrandText>
+          <BrandText style={[fontSemibold13]}>Not enough $fury</BrandText>
           <BrandText
             style={[fontSemibold13, { color: neutral77, maxWidth: 300 }]}
             numberOfLines={2}
           >
-            Oh, you don't have enough $tori to post! Let's do something for
+            Oh, you don't have enough $fury to post! Let's do something for
             community!
           </BrandText>
         </View>

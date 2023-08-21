@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, useWindowDimensions, View } from "react-native";
 
-import { PostResult } from "../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.types";
+import { PostResult } from "../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.types";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useSelectedNetworkId } from "../../hooks/useSelectedNetwork";
 import { postResultToPost } from "../../utils/social-feed";

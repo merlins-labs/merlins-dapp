@@ -284,7 +284,7 @@ const Footer: React.FC<{ items: any[] }> = ({ items }) => {
       selectedNFTData.map((nft) => {
         const [network, , tokenId] = parseNftId(nft.id);
 
-        if (nft.networkId !== "teritori" || !network) {
+        if (nft.networkId !== "merlins" || !network) {
           alert(`${nft.networkId} multi-buy is not supported`);
           return;
         }
@@ -315,7 +315,7 @@ const Footer: React.FC<{ items: any[] }> = ({ items }) => {
       });
       if (msgs.length > 0) {
         setLoadingFullScreen(true);
-        const cosmwasmClient = await getKeplrSigningCosmWasmClient("teritori");
+        const cosmwasmClient = await getKeplrSigningCosmWasmClient("merlins");
         try {
           const tx = await cosmwasmClient.signAndBroadcast(
             sender,
@@ -331,7 +331,7 @@ const Footer: React.FC<{ items: any[] }> = ({ items }) => {
               message: "View TX",
               duration: 10000,
               onPress: () => {
-                Linking.openURL(txExplorerLink("teritori", tx.transactionHash)); // test it further
+                Linking.openURL(txExplorerLink("merlins", tx.transactionHash)); // test it further
               },
             });
             dispatch(removeSelected(nft.id)); //remove items from cart

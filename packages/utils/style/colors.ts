@@ -56,7 +56,7 @@ export const gradientColorGray = "#676767";
 export const gradientColorLightGray = "#B7B7B7";
 export const gradientColorLighterGray = "#F5F7FA";
 
-export const currencyTORIcolor = primaryColor;
+export const currencyFURYcolor = primaryColor;
 export const currencyETHcolor = "#232731";
 export const currencyATOMcolor = "#5C26F5";
 export const currencyOSMOcolor = "#A401D4";

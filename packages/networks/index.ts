@@ -18,14 +18,14 @@ import { cosmosThetaNetwork } from "./cosmos-hub-theta";
 import { ethereumNetwork } from "./ethereum";
 import { ethereumGoerliNetwork } from "./ethereum-goerli";
 import { gnoDevNetwork } from "./gno-dev";
-import { gnoTeritoriNetwork } from "./gno-teritori";
+import { gnoMerlinsNetwork } from "./gno-merlins";
 import { gnoTest3Network } from "./gno-test3";
 import { junoNetwork } from "./juno";
 import { osmosisNetwork } from "./osmosis";
 import { osmosisTestnetNetwork } from "./osmosis-testnet";
 // import { solanaNetwork } from "./solana";
-import { teritoriNetwork } from "./teritori";
-import { teritoriTestnetNetwork } from "./teritori-testnet";
+import { merlinsNetwork } from "./merlins";
+import { merlinsTestnetNetwork } from "./merlins-testnet";
 import {
   CosmosNetworkInfo,
   CurrencyInfo,
@@ -35,7 +35,7 @@ import {
   NetworkInfo,
   NetworkKind,
 } from "./types";
-import { MsgBurnTokens } from "../api/teritori/mint";
+import { MsgBurnTokens } from "../api/merlins/mint";
 import { getKeplr } from "../utils/keplr";
 
 export * from "./types";
@@ -43,9 +43,9 @@ export * from "./types";
 export const WEI_TOKEN_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 export const allNetworks = [
-  teritoriNetwork,
+  merlinsNetwork,
   cosmosNetwork,
-  teritoriTestnetNetwork,
+  merlinsTestnetNetwork,
   cosmosThetaNetwork,
   ethereumGoerliNetwork,
   ethereumNetwork,
@@ -54,12 +54,12 @@ export const allNetworks = [
   osmosisTestnetNetwork,
   gnoTest3Network,
   gnoDevNetwork,
-  gnoTeritoriNetwork,
+  gnoMerlinsNetwork,
   // solanaNetwork,
 ];
 
 const pbTypesRegistry = new Registry(defaultRegistryTypes);
-pbTypesRegistry.register("/teritori.mint.v1beta1.MsgBurnTokens", MsgBurnTokens);
+pbTypesRegistry.register("/merlins.mint.v1beta1.MsgBurnTokens", MsgBurnTokens);
 
 export const getCurrency = (
   networkId: string | undefined,
@@ -71,18 +71,18 @@ export const getCurrency = (
   return getNetwork(networkId)?.currencies.find((c) => c.denom === denom);
 };
 
-export const getToriNativeCurrency = (networkId: string) => {
+export const getFuryNativeCurrency = (networkId: string) => {
   const network = getNetwork(networkId);
   if (network?.kind === NetworkKind.Cosmos)
     return network?.currencies.find(
       (currencyInfo: CurrencyInfo) => currencyInfo.kind === "native"
     ) as NativeCurrencyInfo;
   else {
-    const toriIbcCurrency = network?.currencies.find(
+    const furyIbcCurrency = network?.currencies.find(
       (currencyInfo: CurrencyInfo) =>
-        currencyInfo.kind === "ibc" && currencyInfo.sourceDenom === "utori"
+        currencyInfo.kind === "ibc" && currencyInfo.sourceDenom === "ufury"
     );
-    return getNativeCurrency(networkId, toriIbcCurrency?.denom);
+    return getNativeCurrency(networkId, furyIbcCurrency?.denom);
   }
 };
 

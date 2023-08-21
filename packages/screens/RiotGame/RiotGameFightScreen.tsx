@@ -7,7 +7,7 @@ import { GameContentView } from "./component/GameContentView";
 import addCircleSFilledSVG from "../../../assets/icons/add-circle-filled.svg";
 import { PrimaryButtonOutline } from "../../components/buttons/PrimaryButtonOutline";
 import { SpacerColumn } from "../../components/spacer";
-import { Squad } from "../../contracts-clients/teritori-squad-staking/TeritoriSquadStaking.types";
+import { Squad } from "../../contracts-clients/merlins-squad-staking/MerlinsSquadStaking.types";
 import { useSquadStakingConfig } from "../../hooks/riotGame/useSquadStakingConfig";
 import { useSquadStakingSquadsV2 } from "../../hooks/riotGame/useSquadStakingSquadsV2";
 import { useSelectedNetworkId } from "../../hooks/useSelectedNetwork";

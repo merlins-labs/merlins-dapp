@@ -21,7 +21,7 @@ export const TipButton: React.FC<{
   const selectedNetworkId = useSelectedNetworkId();
   const [tipModalVisible, setTipModalVisible] = useState(false);
 
-  const denom = "utori";
+  const denom = "ufury";
   const coins: CoingeckoCoin[] = useMemo(
     () => [
       {

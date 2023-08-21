@@ -5,7 +5,7 @@ import { GnoDAORegistration } from "./gno/useGnoDAOs";
 import {
   Metadata,
   NftInfoResponse,
-} from "../contracts-clients/teritori-name-service/TeritoriNameService.types";
+} from "../contracts-clients/merlins-name-service/MerlinsNameService.types";
 import { GnoNetworkInfo, NetworkKind, getNetwork } from "../networks";
 import { getCosmosNameServiceQueryClient } from "../utils/contracts";
 import { extractGnoJSONString, extractGnoString } from "../utils/gno";

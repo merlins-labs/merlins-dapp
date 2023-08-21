@@ -121,10 +121,10 @@ export const MarketplaceScreen: ScreenFC<"Marketplace"> = () => {
     let denom = collection.denom;
     let volumeDenom = collection.volumeDenom;
     switch (collection.id) {
-      case "tori-tori1gflccmghzfscmxl95z43v36y0rle8v9x8kvt9na03yzywtw86amsj9nf37": // tori gen-1
-      case "tori-tori167xst2jy9n6u92t3n8hf762adtpe3cs6acsgn0w5n2xlz9hv3xgs4ksc6t": // disease of the brain
-      case "tori-tori1wkwy0xh89ksdgj9hr347dyd2dw7zesmtrue6kfzyml4vdtz6e5wscs7038": // tns
-        denom = "utori";
+      case "fury-fury1gflccmghzfscmxl95z43v36y0rle8v9x8kvt9na03yzywtw86amsj9nf37": // fury gen-1
+      case "fury-fury167xst2jy9n6u92t3n8hf762adtpe3cs6acsgn0w5n2xlz9hv3xgs4ksc6t": // disease of the brain
+      case "fury-fury1wkwy0xh89ksdgj9hr347dyd2dw7zesmtrue6kfzyml4vdtz6e5wscs7038": // tns
+        denom = "ufury";
         volumeDenom = denom;
         break;
     }

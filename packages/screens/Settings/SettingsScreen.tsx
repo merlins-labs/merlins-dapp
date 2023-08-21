@@ -44,12 +44,12 @@ const NFTAPIKeyInput: React.FC = () => {
         </BrandText>
         <Pressable
           onPress={() =>
-            // We ask key at each upload for now (Don't have Teritori's key for now)
+            // We ask key at each upload for now (Don't have Merlins's key for now)
             dispatch(setNFTStorageAPI(""))
           }
         >
           <Text style={[fontSemibold14, { color: primaryColor }]}>
-            Reset to Teritoris' API key
+            Reset to Merlinss' API key
           </Text>
         </Pressable>
       </View>

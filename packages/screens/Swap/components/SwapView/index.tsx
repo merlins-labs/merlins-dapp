@@ -166,8 +166,8 @@ export const SwapView: React.FC = () => {
   const cosmosNetwork = allNetworks.find(
     (networkInfo) => networkInfo.id === "cosmos-hub"
   ) as CosmosNetworkInfo;
-  const teritoriNetwork = allNetworks.find(
-    (networkInfo) => networkInfo.id === "teritori"
+  const merlinsNetwork = allNetworks.find(
+    (networkInfo) => networkInfo.id === "merlins"
   ) as CosmosNetworkInfo;
 
   // ---- Default currencies
@@ -184,31 +184,31 @@ export const SwapView: React.FC = () => {
       selectedNetworkId,
     ]
   );
-  const toriCurrency = useMemo(
+  const furyCurrency = useMemo(
     () =>
       selectedNetwork?.currencies.find(
         (currencyInfo: CurrencyInfo) =>
           getNativeCurrency(selectedNetworkId, currencyInfo?.denom)?.denom ===
-          teritoriNetwork?.stakeCurrency
+          merlinsNetwork?.stakeCurrency
       ),
     [
       selectedNetwork?.currencies,
-      teritoriNetwork?.stakeCurrency,
+      merlinsNetwork?.stakeCurrency,
       selectedNetworkId,
     ]
   );
 
   useEffect(() => {
     setCurrencyIn(atomCurrency);
-    setCurrencyOut(toriCurrency);
-  }, [atomCurrency, toriCurrency]);
+    setCurrencyOut(furyCurrency);
+  }, [atomCurrency, furyCurrency]);
 
   // ---- The two current currencies
   const [currencyIn, setCurrencyIn] = useState<CurrencyInfo | undefined>(
     atomCurrency
   );
   const [currencyOut, setCurrencyOut] = useState<CurrencyInfo | undefined>(
-    toriCurrency
+    furyCurrency
   );
   const currencyInNative: NativeCurrencyInfo | undefined = useMemo(
     () => getNativeCurrency(selectedNetworkId, currencyIn?.denom),

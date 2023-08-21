@@ -1,7 +1,7 @@
 package airtable_fetcher
 
 import (
-	"github.com/TERITORI/teritori-dapp/go/pkg/marketplacepb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/marketplacepb"
 	"github.com/mehanizm/airtable"
 	"github.com/pkg/errors"
 )

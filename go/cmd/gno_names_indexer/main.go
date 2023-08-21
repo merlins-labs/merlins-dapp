@@ -9,8 +9,8 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
 	"github.com/go-co-op/gocron"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"
@@ -21,7 +21,7 @@ var nameRegexp = regexp.MustCompile(` * \[(.+)\]\(/r/demo/users\:`)
 
 func main() {
 	// handle args
-	fs := flag.NewFlagSet("teritori-indexer", flag.ContinueOnError)
+	fs := flag.NewFlagSet("merlins-indexer", flag.ContinueOnError)
 	var (
 		dbHost       = fs.String("db-indexer-host", "", "host postgreSQL database")
 		dbPort       = fs.String("db-indexer-port", "", "port for postgreSQL database")
@@ -29,7 +29,7 @@ func main() {
 		dbName       = fs.String("database-name", "", "database name for postgreSQL")
 		dbUser       = fs.String("postgres-user", "", "username for postgreSQL")
 		networksFile = fs.String("networks-file", "networks.json", "path to networks config file")
-		networkID    = fs.String("gno-network-id", "gno-teritori", "network id to index")
+		networkID    = fs.String("gno-network-id", "gno-merlins", "network id to index")
 	)
 	if err := ff.Parse(fs, os.Args[1:],
 		ff.WithEnvVars(),

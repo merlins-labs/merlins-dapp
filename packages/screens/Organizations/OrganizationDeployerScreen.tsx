@@ -80,7 +80,7 @@ export const OrganizationDeployerScreen = () => {
     try {
       switch (network?.kind) {
         case NetworkKind.Gno: {
-          const name = step1DaoInfoFormData?.associatedTeritoriNameService!;
+          const name = step1DaoInfoFormData?.associatedMerlinsNameService!;
           const pkgPath = await adenaDeployGnoDAO(
             network.id,
             selectedWallet?.address!,
@@ -140,7 +140,7 @@ export const OrganizationDeployerScreen = () => {
                 daoCoreCodeId: network.daoCoreCodeId!,
                 name: step1DaoInfoFormData.organizationName,
                 description: step1DaoInfoFormData.organizationDescription,
-                tns: step1DaoInfoFormData.associatedTeritoriNameService,
+                tns: step1DaoInfoFormData.associatedMerlinsNameService,
                 imageUrl: step1DaoInfoFormData.imageUrl,
                 tokenName: step3TokenSettingFormData.tokenName,
                 tokenSymbol: step3TokenSettingFormData.tokenSymbol,
@@ -175,7 +175,7 @@ export const OrganizationDeployerScreen = () => {
                 daoVotingCw4CodeId: network.daoVotingCw4CodeId!,
                 name: step1DaoInfoFormData.organizationName,
                 description: step1DaoInfoFormData.organizationDescription,
-                tns: step1DaoInfoFormData.associatedTeritoriNameService,
+                tns: step1DaoInfoFormData.associatedMerlinsNameService,
                 imageUrl: step1DaoInfoFormData.imageUrl,
                 members: step3MemberSettingFormData.members.map((value) => ({
                   addr: value.addr,

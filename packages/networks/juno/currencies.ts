@@ -37,8 +37,8 @@ export const junoCurrencies: CurrencyInfo[] = [
     kind: "ibc",
     denom:
       "ibc/436B576861090C1C921D56BA1FAE481A04D2E938EBDFF55C4712670F9754AC40",
-    sourceNetwork: "teritori",
-    sourceDenom: "utori",
+    sourceNetwork: "merlins",
+    sourceDenom: "ufury",
     sourceChannelPort: "transfer",
     sourceChannelId: "channel-164",
     destinationChannelPort: "transfer",

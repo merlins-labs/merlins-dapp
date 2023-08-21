@@ -44,7 +44,7 @@ export const LaunchpadApplyScreen: ScreenFC<"LaunchpadApply"> = () => {
       </BrandText>
       <SpacerColumn size={2} />
       <BrandText style={styles.descriptionText}>
-        Teritori is the solution. Teritori is built to provide useful smart
+        Merlins is the solution. Merlins is built to provide useful smart
         contract interfaces that helps you build and deploy your own NFT
         collections in no time.
       </BrandText>

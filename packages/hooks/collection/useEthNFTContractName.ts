@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { TeritoriNft__factory } from "../../evm-contracts-clients/teritori-nft/TeritoriNft__factory";
+import { MerlinsNft__factory } from "../../evm-contracts-clients/merlins-nft/MerlinsNft__factory";
 import { NetworkKind, getNetwork } from "../../networks";
 import { getEthereumProvider } from "../../utils/ethereum";
 
@@ -25,7 +25,7 @@ export const useEthNFTContractName = (
         return undefined;
       }
 
-      const nftClient = TeritoriNft__factory.connect(nftAddress, provider);
+      const nftClient = MerlinsNft__factory.connect(nftAddress, provider);
       return await nftClient.callStatic.name();
     },
     { staleTime: Infinity, enabled: !!networkId && !!nftAddress }

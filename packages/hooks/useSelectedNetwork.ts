@@ -11,7 +11,7 @@ import { useAppDispatch } from "../store/store";
 export const useSelectedNetworkId = () => {
   const dispatch = useAppDispatch();
   const currentNetworkId = useSelector(selectSelectedNetworkId);
-  const networkId = currentNetworkId || "teritori";
+  const networkId = currentNetworkId || "merlins";
   useEffect(() => {
     if (!currentNetworkId) {
       dispatch(setSelectedNetworkId(networkId));

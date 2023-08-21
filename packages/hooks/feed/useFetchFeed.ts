@@ -5,7 +5,7 @@ import { Post, PostsRequest } from "../../api/feed/v1/feed";
 import { nonSigningSocialFeedClient } from "../../client-creators/socialFeedClient";
 import {
   GNO_SOCIAL_FEEDS_PKG_PATH,
-  TERITORI_FEED_ID,
+  MERLINS_FEED_ID,
 } from "../../components/socialFeed/const";
 import { decodeGnoPost } from "../../components/socialFeed/utils";
 import { GnoNetworkInfo, NetworkInfo, NetworkKind } from "../../networks";
@@ -22,7 +22,7 @@ export type PostsList = {
 export const combineFetchFeedPages = (pages: PostsList[]) =>
   pages.reduce((acc: Post[], page) => [...acc, ...(page?.list || [])], []);
 
-const fetchTeritoriFeed = async (
+const fetchMerlinsFeed = async (
   selectedNetwork: NetworkInfo,
   req: PostsRequest,
   pageParam: number
@@ -40,7 +40,7 @@ const fetchTeritoriFeed = async (
     const list = await getPosts(selectedNetwork.id, postsRequest);
     return { list, totalCount: mainPostsCount } as PostsList;
   } catch (err) {
-    console.error("teritori initData err", err);
+    console.error("merlins initData err", err);
     return { list: [], totalCount: 0 } as PostsList;
   }
 };
@@ -59,7 +59,7 @@ const fetchGnoFeed = async (
     const provider = new GnoJSONRPCProvider(selectedNetwork.endpoint);
     const output = await provider.evaluateExpression(
       GNO_SOCIAL_FEEDS_PKG_PATH,
-      `GetPosts(${TERITORI_FEED_ID}, ${categoriesStr}, ${offset}, ${limit})`
+      `GetPosts(${MERLINS_FEED_ID}, ${categoriesStr}, ${offset}, ${limit})`
     );
 
     const posts: Post[] = [];
@@ -89,7 +89,7 @@ export const useFetchFeed = (req: PostsRequest) => {
 
       async ({ pageParam = req.offset }) => {
         if (selectedNetwork?.kind === NetworkKind.Cosmos) {
-          return fetchTeritoriFeed(selectedNetwork, req, pageParam);
+          return fetchMerlinsFeed(selectedNetwork, req, pageParam);
         } else if (selectedNetwork?.kind === NetworkKind.Gno) {
           return fetchGnoFeed(selectedNetwork, req, pageParam);
         }

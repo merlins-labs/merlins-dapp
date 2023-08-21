@@ -68,7 +68,7 @@ export const FeedNewArticleScreen: ScreenFC<"FeedNewArticle"> = () => {
   const navigation = useAppNavigation();
   const userId = getUserId(selectedNetworkId, wallet?.address);
   const balances = useBalances(
-    process.env.TERITORI_NETWORK_ID,
+    process.env.MERLINS_NETWORK_ID,
     wallet?.address
   );
   const {
@@ -102,7 +102,7 @@ export const FeedNewArticleScreen: ScreenFC<"FeedNewArticle"> = () => {
     audios,
     videos,
   }: PublishValues) => {
-    const toriBalance = balances.find((bal) => bal.denom === "utori");
+    const furyBalance = balances.find((bal) => bal.denom === "ufury");
     const files = [
       ...(formValues.files || []),
       ...images,
@@ -110,7 +110,7 @@ export const FeedNewArticleScreen: ScreenFC<"FeedNewArticle"> = () => {
       ...videos,
     ];
 
-    if (postFee > Number(toriBalance?.amount) && !freePostCount) {
+    if (postFee > Number(furyBalance?.amount) && !freePostCount) {
       return setNotEnoughFundModal(true);
     }
     let pinataJWTKey = undefined;
@@ -234,7 +234,7 @@ export const FeedNewArticleScreen: ScreenFC<"FeedNewArticle"> = () => {
               : `The cost for this Article is ${prettyPrice(
                   selectedNetworkId,
                   postFee.toString(),
-                  selectNetworkInfo?.currencies?.[0].denom || "utori"
+                  selectNetworkInfo?.currencies?.[0].denom || "ufury"
                 )}`}
           </BrandText>
         </TertiaryBox>

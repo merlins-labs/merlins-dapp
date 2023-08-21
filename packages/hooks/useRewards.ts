@@ -15,7 +15,7 @@ import {
   NetworkKind,
 } from "../networks";
 import { CoingeckoCoin, getCoingeckoPrice } from "../utils/coingecko";
-import { CosmosRewardsResponse } from "../utils/teritori";
+import { CosmosRewardsResponse } from "../utils/merlins";
 
 export type Reward = {
   validator: string;

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { TeritoriNftVaultQueryClient } from "../../contracts-clients/teritori-nft-vault/TeritoriNftVault.client";
+import { MerlinsNftVaultQueryClient } from "../../contracts-clients/merlins-nft-vault/MerlinsNftVault.client";
 import {
   getCosmosNetwork,
   mustGetNonSigningCosmWasmClient,
@@ -15,7 +15,7 @@ export const useVaultConfig = (networkId: string) => {
         return undefined;
       }
       const cosmwasmClient = await mustGetNonSigningCosmWasmClient(networkId);
-      const client = new TeritoriNftVaultQueryClient(
+      const client = new MerlinsNftVaultQueryClient(
         cosmwasmClient,
         network.vaultContractAddress
       );

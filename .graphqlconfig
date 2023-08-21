@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "TheGraph GraphQL Endpoint MainNet": {
-        "url": "https://api.studio.thegraph.com/query/40379/teritori-mainnet/v1",
+        "url": "https://api.studio.thegraph.com/query/40379/merlins-mainnet/v1",
         "headers": {
           "user-agent": "JS GraphQL"
         },

@@ -7,7 +7,7 @@ import {
   PostExtra,
   PostResultExtra,
 } from "../components/socialFeed/NewsFeed/NewsFeed.type";
-import { PostResult } from "../contracts-clients/teritori-social-feed/TeritoriSocialFeed.types";
+import { PostResult } from "../contracts-clients/merlins-social-feed/MerlinsSocialFeed.types";
 import { getUserId } from "../networks";
 
 export const DEFAULT_NAME = "Anon";

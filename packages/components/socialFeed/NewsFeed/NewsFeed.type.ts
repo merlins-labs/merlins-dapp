@@ -1,5 +1,5 @@
 import { Post } from "../../../api/feed/v1/feed";
-import { PostResult } from "../../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.types";
+import { PostResult } from "../../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.types";
 import { LocalFileData, RemoteFileData } from "../../../utils/types/files";
 
 export enum PostCategory {

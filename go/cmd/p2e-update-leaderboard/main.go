@@ -9,10 +9,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/contractutil"
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
-	"github.com/TERITORI/teritori-dapp/go/pkg/p2e"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/contractutil"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/pkg/p2e"
 	"github.com/go-co-op/gocron"
 	"github.com/peterbourgon/ff/v3"
 	"github.com/pkg/errors"
@@ -42,8 +42,8 @@ func sendRewardsList(
 
 	mnemonic := distributorMnemonic
 	funds := sdk.NewCoins()
-	prefix := "tori"
-	gasPrices := "0.025utori"
+	prefix := "fury"
+	gasPrices := "0.025ufury"
 	gasAdjustment := 1.3
 
 	distributorOwnerAddress := configData["owner"].(string)
@@ -201,10 +201,10 @@ func snapshotLeaderboard(seasonId string, db *gorm.DB) error {
 func main() {
 	fs := flag.NewFlagSet("p2e-update-leaderboard", flag.ContinueOnError)
 	var (
-		distributorOwnerMnemonic = fs.String("teritori-distributor-owner-mnemonic", "", "mnemonic of the owner of distributor contract")
+		distributorOwnerMnemonic = fs.String("merlins-distributor-owner-mnemonic", "", "mnemonic of the owner of distributor contract")
 		rpcEndpoint              = fs.String("p2e-rpc-endpoint", "", "public chain rpc endpoint")
 		networksFile             = fs.String("networks-file", "networks.json", "path to networks config file")
-		networkId                = fs.String("p2e-network-id", "teritori-testnet", "network id")
+		networkId                = fs.String("p2e-network-id", "merlins-testnet", "network id")
 
 		dbHost = fs.String("db-indexer-host", "", "host postgreSQL database")
 		dbPort = fs.String("db-indexer-port", "", "port for postgreSQL database")
@@ -252,7 +252,7 @@ func main() {
 	// validate flags
 
 	if *distributorOwnerMnemonic == "" {
-		panic(errors.New("distributor-owner-mnemonic is mandatory. You have to add TERITORI_DISTRIBUTOR_OWNER_MNEMONIC in .env for local testing (Don't commit this value on repo)"))
+		panic(errors.New("distributor-owner-mnemonic is mandatory. You have to add MERLINS_DISTRIBUTOR_OWNER_MNEMONIC in .env for local testing (Don't commit this value on repo)"))
 	}
 
 	if *rpcEndpoint == "" {

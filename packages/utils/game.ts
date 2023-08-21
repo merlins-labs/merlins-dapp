@@ -18,11 +18,11 @@ import nft5 from "../../assets/game/nft-5.png";
 import subtractSVG from "../../assets/game/subtract.svg";
 import toolSVG from "../../assets/game/tool.svg";
 import { NFT } from "../api/marketplace/v1/marketplace";
-import { TeritoriSquadStakingClient } from "../contracts-clients/teritori-squad-staking/TeritoriSquadStaking.client";
+import { MerlinsSquadStakingClient } from "../contracts-clients/merlins-squad-staking/MerlinsSquadStaking.client";
 import {
   GetConfigResponse,
   Nft as SquadStakeNFT,
-} from "../contracts-clients/teritori-squad-staking/TeritoriSquadStaking.types";
+} from "../contracts-clients/merlins-squad-staking/MerlinsSquadStaking.types";
 import {
   getCosmosNetwork,
   getKeplrSigningCosmWasmClient,
@@ -400,7 +400,7 @@ export const squadWithdrawSeason1 = async (userId: string | undefined) => {
   }
 
   const signingClient = await getKeplrSigningCosmWasmClient(network.id);
-  const client = new TeritoriSquadStakingClient(
+  const client = new MerlinsSquadStakingClient(
     signingClient,
     userAddress,
     contractAddress

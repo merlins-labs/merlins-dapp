@@ -6,8 +6,8 @@ import { Image, StyleSheet, View } from "react-native";
 import { NFTTransferForm } from "./types";
 import { NFT } from "../../api/marketplace/v1/marketplace";
 import { useFeedbacks } from "../../context/FeedbacksProvider";
-import { TeritoriNftClient } from "../../contracts-clients/teritori-nft/TeritoriNft.client";
-import { TeritoriNft__factory } from "../../evm-contracts-clients/teritori-nft/TeritoriNft__factory";
+import { MerlinsNftClient } from "../../contracts-clients/merlins-nft/MerlinsNft.client";
+import { MerlinsNft__factory } from "../../evm-contracts-clients/merlins-nft/MerlinsNft__factory";
 import useSelectedWallet from "../../hooks/useSelectedWallet";
 import {
   NetworkKind,
@@ -66,7 +66,7 @@ export const NFTTransferModal: React.FC<NFTTransferModalProps> = ({
     const signingComswasmClient = await getKeplrSigningCosmWasmClient(
       networkInfo.id
     );
-    const nftClient = new TeritoriNftClient(
+    const nftClient = new MerlinsNftClient(
       signingComswasmClient,
       sender,
       nftContractAddress
@@ -91,7 +91,7 @@ export const NFTTransferModal: React.FC<NFTTransferModalProps> = ({
       throw Error("Unable to get signer");
     }
 
-    const nftClient = await TeritoriNft__factory.connect(
+    const nftClient = await MerlinsNft__factory.connect(
       nftContractAddress,
       signer
     );

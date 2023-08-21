@@ -12,8 +12,8 @@ import {
   useFeedbacks,
 } from "../../context/FeedbacksProvider";
 import { Wallet } from "../../context/WalletsProvider";
-import { TeritoriNftVaultClient } from "../../contracts-clients/teritori-nft-vault/TeritoriNftVault.client";
-import { NFTVault__factory } from "../../evm-contracts-clients/teritori-nft-vault/NFTVault__factory";
+import { MerlinsNftVaultClient } from "../../contracts-clients/merlins-nft-vault/MerlinsNftVault.client";
+import { NFTVault__factory } from "../../evm-contracts-clients/merlins-nft-vault/NFTVault__factory";
 import { useCancelNFTListing } from "../../hooks/useCancelNFTListing";
 import { useMaxResolution } from "../../hooks/useMaxResolution";
 import { useMintEnded } from "../../hooks/useMintEnded";
@@ -79,7 +79,7 @@ const Content: React.FC<{
     let buyFunc: CallableFunction | null = null;
     switch (network?.kind) {
       case NetworkKind.Cosmos:
-        buyFunc = teritoriBuy;
+        buyFunc = merlinsBuy;
         break;
       case NetworkKind.Ethereum:
         buyFunc = ethereumBuy;
@@ -216,7 +216,7 @@ export const NFTDetailScreen: ScreenFC<"NFTDetail"> = ({
 
   useEffect(() => {
     navigation.setOptions({
-      title: `Teritori - NFT: ${info?.name}`,
+      title: `Merlins - NFT: ${info?.name}`,
     });
   }, [info?.name, navigation]);
 
@@ -240,13 +240,13 @@ export const NFTDetailScreen: ScreenFC<"NFTDetail"> = ({
   );
 };
 
-const teritoriBuy = async (wallet: Wallet, info: NFTInfo) => {
+const merlinsBuy = async (wallet: Wallet, info: NFTInfo) => {
   const network = mustGetCosmosNetwork(info.networkId);
   if (!network.vaultContractAddress) {
     throw new Error("network not supported");
   }
   const signingCosmwasmClient = await getKeplrSigningCosmWasmClient(network.id);
-  const signingVaultClient = new TeritoriNftVaultClient(
+  const signingVaultClient = new MerlinsNftVaultClient(
     signingCosmwasmClient,
     wallet.address,
     network.vaultContractAddress

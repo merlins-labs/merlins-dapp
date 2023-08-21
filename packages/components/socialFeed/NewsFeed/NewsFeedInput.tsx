@@ -95,7 +95,7 @@ import { FileUploader } from "../../fileUploader";
 import { SpacerColumn } from "../../spacer";
 import { EmojiSelector } from "../EmojiSelector";
 import { GIFSelector } from "../GIFSelector";
-import { GNO_SOCIAL_FEEDS_PKG_PATH, TERITORI_FEED_ID } from "../const";
+import { GNO_SOCIAL_FEEDS_PKG_PATH, MERLINS_FEED_ID } from "../const";
 
 interface NewsFeedInputProps {
   type: "comment" | "post";
@@ -150,7 +150,7 @@ export const NewsFeedInput = React.forwardRef<
     const inputHeight = useSharedValue(20);
     const wallet = useSelectedWallet();
     const selectedNetwork = useSelectedNetworkInfo();
-    const selectedNetworkId = selectedNetwork?.id || "teritori";
+    const selectedNetworkId = selectedNetwork?.id || "merlins";
     const selectedWallet = useSelectedWallet();
     const userId = getUserId(selectedNetworkId, selectedWallet?.address);
     const inputRef = useRef<TextInput>(null);
@@ -302,7 +302,7 @@ export const NewsFeedInput = React.forwardRef<
                     msg: Buffer.from(
                       JSON.stringify({ create_post: msg })
                     ).toString("base64"),
-                    funds: [{ amount: postFee.toString(), denom: "utori" }],
+                    funds: [{ amount: postFee.toString(), denom: "ufury" }],
                   },
                 },
               },
@@ -325,7 +325,7 @@ export const NewsFeedInput = React.forwardRef<
               pkg_path: GNO_SOCIAL_FEEDS_PKG_PATH,
               func: "CreatePost",
               args: [
-                TERITORI_FEED_ID,
+                MERLINS_FEED_ID,
                 msg.parentPostIdentifier || "0",
                 msg.category.toString(),
                 msg.metadata,
@@ -352,7 +352,7 @@ export const NewsFeedInput = React.forwardRef<
               args: {
                 fee: defaultSocialFeedFee,
                 memo: "",
-                funds: [coin(postFee, "utori")],
+                funds: [coin(postFee, "ufury")],
               },
             });
           }
@@ -593,7 +593,7 @@ export const NewsFeedInput = React.forwardRef<
                 : `The cost for this ${type} is ${prettyPrice(
                     selectedNetworkId,
                     postFee.toString(),
-                    selectedNetwork?.currencies?.[0].denom || "utori"
+                    selectedNetwork?.currencies?.[0].denom || "ufury"
                   )}`}
             </BrandText>
           </View>

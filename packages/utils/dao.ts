@@ -4,7 +4,7 @@ import {
 } from "@cosmjs/cosmwasm-stargate";
 import { StdFee, Coin } from "@cosmjs/stargate";
 
-import { TeritoriNameServiceClient } from "../contracts-clients/teritori-name-service/TeritoriNameService.client";
+import { MerlinsNameServiceClient } from "../contracts-clients/merlins-name-service/MerlinsNameService.client";
 import {
   mustGetCosmosNetwork,
   getKeplrSigningCosmWasmClient,
@@ -290,7 +290,7 @@ export const createDaoMemberBased = async (
 
   const client = await getKeplrSigningCosmWasmClient(networkId);
 
-  const nameServiceClient = new TeritoriNameServiceClient(
+  const nameServiceClient = new MerlinsNameServiceClient(
     client,
     sender,
     network.nameServiceContractAddress

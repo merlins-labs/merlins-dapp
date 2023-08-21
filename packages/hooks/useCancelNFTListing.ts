@@ -2,8 +2,8 @@ import { useCallback } from "react";
 
 import useSelectedWallet from "./useSelectedWallet";
 import { useFeedbacks } from "../context/FeedbacksProvider";
-import { TeritoriNftVaultClient } from "../contracts-clients/teritori-nft-vault/TeritoriNftVault.client";
-import { NFTVault__factory } from "../evm-contracts-clients/teritori-nft-vault/NFTVault__factory";
+import { MerlinsNftVaultClient } from "../contracts-clients/merlins-nft-vault/MerlinsNftVault.client";
+import { NFTVault__factory } from "../evm-contracts-clients/merlins-nft-vault/NFTVault__factory";
 import {
   getKeplrSigningCosmWasmClient,
   getNetwork,
@@ -13,7 +13,7 @@ import {
 } from "../networks";
 import { getMetaMaskEthereumSigner } from "../utils/ethereum";
 
-const teritoriCancelNFTListing = async (
+const merlinsCancelNFTListing = async (
   networkId: string,
   sender: string,
   nftContractAddress: string,
@@ -24,7 +24,7 @@ const teritoriCancelNFTListing = async (
     throw new Error("network not supported");
   }
   const cosmwasmClient = await getKeplrSigningCosmWasmClient(networkId);
-  const vaultClient = new TeritoriNftVaultClient(
+  const vaultClient = new MerlinsNftVaultClient(
     cosmwasmClient,
     sender,
     network.vaultContractAddress
@@ -90,7 +90,7 @@ export const useCancelNFTListing = (
 
       switch (network.kind) {
         case NetworkKind.Cosmos:
-          return await teritoriCancelNFTListing(
+          return await merlinsCancelNFTListing(
             network.id,
             wallet.address,
             nftContractAddress,

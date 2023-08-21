@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { DraxProvider, DraxView } from "react-native-drax";
 
-import teritorriSvg from "../../../assets/icons/networks/teritori.svg";
+import teritorriSvg from "../../../assets/icons/networks/merlins.svg";
 import {
   Collection,
   MintState,
@@ -34,8 +34,8 @@ import {
   RioterFooterNftQueryClient,
 } from "../../contracts-clients/rioter-footer-nft/RioterFooterNft.client";
 import { Uint128 } from "../../contracts-clients/rioter-footer-nft/RioterFooterNft.types";
-import { TeritoriBunkerMinterQueryClient } from "../../contracts-clients/teritori-bunker-minter/TeritoriBunkerMinter.client";
-import { TeritoriNftQueryClient } from "../../contracts-clients/teritori-nft/TeritoriNft.client";
+import { MerlinsBunkerMinterQueryClient } from "../../contracts-clients/merlins-bunker-minter/MerlinsBunkerMinter.client";
+import { MerlinsNftQueryClient } from "../../contracts-clients/merlins-nft/MerlinsNft.client";
 import { useCollections } from "../../hooks/useCollections";
 import { useSelectedNetworkId } from "../../hooks/useSelectedNetwork";
 import useSelectedWallet from "../../hooks/useSelectedWallet";
@@ -149,7 +149,7 @@ export const RiotersFooterScreen: React.FC = () => {
           });
           const newNfts: FooterNftData[] = [];
           for (const nft of nfts) {
-            const nftClient = new TeritoriNftQueryClient(
+            const nftClient = new MerlinsNftQueryClient(
               cosmwasmClient,
               nft.contract_address
             );
@@ -236,7 +236,7 @@ export const RiotersFooterScreen: React.FC = () => {
       const cosmwasmClient = await mustGetNonSigningCosmWasmClient(
         selectedNetworkId
       );
-      const minterClient = new TeritoriBunkerMinterQueryClient(
+      const minterClient = new MerlinsBunkerMinterQueryClient(
         cosmwasmClient,
         nftMinterContractAddress.toString()
       );
@@ -260,7 +260,7 @@ export const RiotersFooterScreen: React.FC = () => {
         [
           {
             amount: finalPrice.toString(),
-            denom: "utori", // FIXME: don't harcode
+            denom: "ufury", // FIXME: don't harcode
           },
         ]
       );
@@ -489,8 +489,8 @@ export const RiotersFooterScreen: React.FC = () => {
           onClose={() => setTransactionPaymentModalVisible(false)}
           visible={transactionPaymentModalVisible}
           price={price.toString()}
-          priceDenom="utori" // FIXME: don't hardcode
-          label="Pay $Tori"
+          priceDenom="ufury" // FIXME: don't hardcode
+          label="Pay $Fury"
           textComponent={
             <BrandText style={fontSemibold14}>
               <BrandText style={[fontSemibold14, { color: neutral77 }]}>

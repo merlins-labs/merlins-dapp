@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
@@ -57,9 +57,9 @@ func (h *Handler) handleExecuteSendNFTFallback(e *Message, execMsg *wasmtypes.Ms
 	// find nft id
 	var collection *indexerdb.Collection
 	findResult := h.db.
-		Preload("TeritoriCollection").
-		Joins("JOIN Teritori_collections ON Teritori_collections.collection_id = collections.id").
-		Where("Teritori_collections.nft_contract_address = ?", execMsg.Contract).
+		Preload("MerlinsCollection").
+		Joins("JOIN Merlins_collections ON Merlins_collections.collection_id = collections.id").
+		Where("Merlins_collections.nft_contract_address = ?", execMsg.Contract).
 		Find(&collection)
 	if err := findResult.
 		Error; err != nil {
@@ -69,10 +69,10 @@ func (h *Handler) handleExecuteSendNFTFallback(e *Message, execMsg *wasmtypes.Ms
 		h.logger.Debug("ignored send_nft on unknown collection")
 		return nil
 	}
-	if collection.TeritoriCollection == nil {
-		return errors.New("no teritori info on collection")
+	if collection.MerlinsCollection == nil {
+		return errors.New("no merlins info on collection")
 	}
-	nftId := h.config.Network.NFTID(collection.TeritoriCollection.MintContractAddress, tokenId)
+	nftId := h.config.Network.NFTID(collection.MerlinsCollection.MintContractAddress, tokenId)
 
 	senderID := h.config.Network.UserID(execMsg.Sender)
 	receiverID := h.config.Network.UserID(sendNFTMsg.Data.Contract)
@@ -111,9 +111,9 @@ func (h *Handler) handleExecuteBurn(e *Message, execMsg *wasmtypes.MsgExecuteCon
 	// get collection
 	var collection indexerdb.Collection
 	r := h.db.
-		Preload("TeritoriCollection").
-		Joins("JOIN Teritori_collections ON Teritori_collections.collection_id = collections.id").
-		Where("Teritori_collections.nft_contract_address = ?", contractAddress).
+		Preload("MerlinsCollection").
+		Joins("JOIN Merlins_collections ON Merlins_collections.collection_id = collections.id").
+		Where("Merlins_collections.nft_contract_address = ?", contractAddress).
 		Find(&collection)
 	if err := r.
 		Error; err != nil {
@@ -123,8 +123,8 @@ func (h *Handler) handleExecuteBurn(e *Message, execMsg *wasmtypes.MsgExecuteCon
 		h.logger.Debug("ignored burn on unknown collection", zap.String("contract-address", contractAddress))
 		return nil
 	}
-	if collection.TeritoriCollection == nil {
-		return errors.New("no teritori info on collection")
+	if collection.MerlinsCollection == nil {
+		return errors.New("no merlins info on collection")
 	}
 
 	// FIXME: analyze exec msg
@@ -137,7 +137,7 @@ func (h *Handler) handleExecuteBurn(e *Message, execMsg *wasmtypes.MsgExecuteCon
 	tokenId := tokenIds[0]
 
 	// delete
-	nftId := h.config.Network.NFTID(collection.TeritoriCollection.MintContractAddress, tokenId)
+	nftId := h.config.Network.NFTID(collection.MerlinsCollection.MintContractAddress, tokenId)
 	if err := h.db.Model(&indexerdb.NFT{}).Where(&indexerdb.NFT{ID: nftId}).UpdateColumn("burnt", true).Error; err != nil {
 		return errors.Wrap(err, "failed to delete nft")
 	}
@@ -181,9 +181,9 @@ func (h *Handler) handleExecuteTransferNFT(e *Message, execMsg *wasmtypes.MsgExe
 	// get collection
 	var collection indexerdb.Collection
 	r := h.db.
-		Preload("TeritoriCollection").
-		Joins("JOIN Teritori_collections ON Teritori_collections.collection_id = collections.id").
-		Where("Teritori_collections.nft_contract_address = ?", contractAddress).
+		Preload("MerlinsCollection").
+		Joins("JOIN Merlins_collections ON Merlins_collections.collection_id = collections.id").
+		Where("Merlins_collections.nft_contract_address = ?", contractAddress).
 		Find(&collection)
 	if err := r.
 		Error; err != nil {
@@ -193,8 +193,8 @@ func (h *Handler) handleExecuteTransferNFT(e *Message, execMsg *wasmtypes.MsgExe
 		h.logger.Debug("ignored burn on unknown collection", zap.String("contract-address", contractAddress))
 		return nil
 	}
-	if collection.TeritoriCollection == nil {
-		return errors.New("no teritori info on collection")
+	if collection.MerlinsCollection == nil {
+		return errors.New("no merlins info on collection")
 	}
 
 	// get msg
@@ -206,7 +206,7 @@ func (h *Handler) handleExecuteTransferNFT(e *Message, execMsg *wasmtypes.MsgExe
 	receiverID := h.config.Network.UserID(msg.Data.Recipient)
 
 	// update owner in db
-	nftId := h.config.Network.NFTID(collection.TeritoriCollection.MintContractAddress, msg.Data.TokenID)
+	nftId := h.config.Network.NFTID(collection.MerlinsCollection.MintContractAddress, msg.Data.TokenID)
 	if err := h.db.Model(&indexerdb.NFT{ID: nftId}).UpdateColumn("owner_id", receiverID).Error; err != nil {
 		return errors.Wrap(err, "failed to updated owner in db")
 	}

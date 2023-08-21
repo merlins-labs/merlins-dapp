@@ -10,8 +10,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/TERITORI/teritori-dapp/go/internal/ipfsutil"
-	"github.com/TERITORI/teritori-dapp/go/pkg/pricespb"
+	"github.com/MERLINS/merlins-dapp/go/internal/ipfsutil"
+	"github.com/MERLINS/merlins-dapp/go/pkg/pricespb"
 	"github.com/allegro/bigcache/v3"
 	"github.com/pkg/errors"
 	abcitypes "github.com/tendermint/tendermint/abci/types"

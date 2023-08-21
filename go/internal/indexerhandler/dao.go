@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 	"gorm.io/datatypes"

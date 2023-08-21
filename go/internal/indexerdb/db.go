@@ -1,7 +1,7 @@
 package indexerdb
 
 import (
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
 	"github.com/pkg/errors"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -28,11 +28,11 @@ var allModels = []interface{}{
 
 	// collections
 	&Collection{},
-	&TeritoriCollection{},
+	&MerlinsCollection{},
 
 	// nfts
 	&NFT{},
-	&TeritoriNFT{},
+	&MerlinsNFT{},
 
 	// activity
 	&Activity{},

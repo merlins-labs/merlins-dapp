@@ -24,7 +24,7 @@ export const ConnectAdenaButton: React.FC<{
         Linking.openURL("https://adena.app/");
         return;
       }
-      const establishResult = await adena.AddEstablish("Teritori dApp");
+      const establishResult = await adena.AddEstablish("Merlins dApp");
       console.log("established", establishResult);
       dispatch(setIsAdenaConnected(true));
       const account = await adena.GetAccount();

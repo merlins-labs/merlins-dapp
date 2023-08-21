@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-import { Metadata } from "../contracts-clients/teritori-name-service/TeritoriNameService.types";
+import { Metadata } from "../contracts-clients/merlins-name-service/MerlinsNameService.types";
 
 export interface TNSMetaDataType extends Metadata {
   tokenId: string;

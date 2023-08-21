@@ -19,7 +19,7 @@ export const BuyTokens: React.FC<{
         flexDirection,
       }}
       onPress={() => {
-        Linking.openURL("https://frontier.osmosis.zone/?from=OSMO&to=TORI");
+        Linking.openURL("https://frontier.osmosis.zone/?from=OSMO&to=FURY");
       }}
     >
       <CreditCardIcon

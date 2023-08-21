@@ -39,7 +39,7 @@ import {
   useFeedbacks,
 } from "../../context/FeedbacksProvider";
 import { Wallet } from "../../context/WalletsProvider";
-import { TeritoriMinter__factory } from "../../evm-contracts-clients/teritori-bunker-minter/TeritoriMinter__factory";
+import { MerlinsMinter__factory } from "../../evm-contracts-clients/merlins-bunker-minter/MerlinsMinter__factory";
 import { useBalances } from "../../hooks/useBalances";
 import { useCollectionInfo } from "../../hooks/useCollectionInfo";
 import useSelectedWallet from "../../hooks/useSelectedWallet";
@@ -172,7 +172,7 @@ export const MintCollectionScreen: ScreenFC<"MintCollection"> = ({
         throw Error("no account connected");
       }
 
-      const minterClient = TeritoriMinter__factory.connect(mintAddress, signer);
+      const minterClient = MerlinsMinter__factory.connect(mintAddress, signer);
       const userState = await minterClient.callStatic.userState(wallet.address);
 
       // TODO: check this properly later
@@ -289,9 +289,9 @@ export const MintCollectionScreen: ScreenFC<"MintCollection"> = ({
   const mintTermsConditionsURL = useMemo(() => {
     switch (mintAddress) {
       case getCosmosNetwork(network?.id)?.riotContractAddressGen0:
-        return "https://teritori.notion.site/The-R-ot-Terms-Conditions-0ea730897c964b04ab563e0648cc2f5b";
+        return "https://merlins.notion.site/The-R-ot-Terms-Conditions-0ea730897c964b04ab563e0648cc2f5b";
       case getEthereumNetwork(network?.id)?.riotContractAddress:
-        return "https://teritori.notion.site/The-Riot-Terms-Conditions-ETH-92328fb2d4494b6fb073b38929b28883";
+        return "https://merlins.notion.site/The-Riot-Terms-Conditions-ETH-92328fb2d4494b6fb073b38929b28883";
       default:
         return null;
     }

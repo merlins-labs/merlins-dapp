@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from "react-native";
 
 import DragAndDropNftInReceiverView from "./DragAndDropNftInReceiverView";
 import NftDragResizerCorner from "./NftDragResizerCorner";
-import teritorriSvg from "../../../assets/icons/networks/teritori.svg";
+import teritorriSvg from "../../../assets/icons/networks/merlins.svg";
 import { NFT } from "../../api/marketplace/v1/marketplace";
 import { neutral33 } from "../../utils/style/colors";
 import { NFTDropedAdjustmentType, FooterNftData } from "../../utils/types/nft";

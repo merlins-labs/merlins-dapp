@@ -23,7 +23,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 1",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 1_800_000,
 		BossName:   "Philipp Rustov",
@@ -46,7 +46,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 2",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 300_000,
 		BossName:   "Ursula Delahaye",
@@ -69,7 +69,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 3",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 1_200_000,
 		BossName:   "Justin Trado",
@@ -92,7 +92,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 4",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 280_000,
 		BossName:   "Ursula Delahaye",
@@ -115,7 +115,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 4b",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 1_200_000,
 		BossName:   "Ursula Delahaye",
@@ -138,7 +138,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 5",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 1_000_000,
 		BossName:   "Big George",
@@ -161,7 +161,7 @@ var THE_RIOT_SEASONS = []Season{
 	{
 		ID:         "Season 6",
 		GameID:     THE_RIOT_GAME_ID,
-		Denom:      "tori",
+		Denom:      "fury",
 		Decimals:   6,
 		TotalPrize: 1_000_000,
 		BossName:   "Didier Schmidt",

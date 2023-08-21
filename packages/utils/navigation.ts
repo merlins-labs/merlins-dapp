@@ -58,7 +58,7 @@ export type RootStackParamList = {
   CoreDAO: undefined;
 
   DAppStore: undefined;
-  ToriPunks: { route: string };
+  FuryPunks: { route: string };
 };
 
 export type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -99,7 +99,7 @@ const navConfig: {
     LaunchpadApply: "launchpad/apply",
     // Mint NFT collection
     MintCollection: "collection/:id/mint",
-    // ==== Teritori Name Service
+    // ==== Merlins Name Service
     TNSHome: "tns/:modal?",
 
     // ==== Marketplace
@@ -128,7 +128,7 @@ const navConfig: {
     // ==== DAppStore
     DAppStore: "dapp-store",
     // === DApps
-    ToriPunks: "dapp/tori-punks/:route?",
+    FuryPunks: "dapp/fury-punks/:route?",
   },
 };
 

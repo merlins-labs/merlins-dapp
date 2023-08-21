@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/feedpb"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/feedpb"
 	"github.com/dgraph-io/ristretto"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"

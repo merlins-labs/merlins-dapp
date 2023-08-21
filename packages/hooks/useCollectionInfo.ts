@@ -42,7 +42,7 @@ export const useCollectionInfo = (
     info: breedingCollectionInfo,
     notFound: breedingNotFound,
     refetch: breedingRefetch,
-  } = useTeritoriBreedingCollectionInfo(
+  } = useMerlinsBreedingCollectionInfo(
     network?.id,
     contractKind === CollectionContractKind.CosmwasmBreedingV0
   );
@@ -59,7 +59,7 @@ export const useCollectionInfo = (
     info: ethereumCollectionInfo,
     notFound: ethNotFound,
     refetch: ethRefetch,
-  } = useEthereumTeritoriBunkerCollectionInfo(
+  } = useEthereumMerlinsBunkerCollectionInfo(
     network?.id,
     mintAddress,
     contractKind === CollectionContractKind.EthereumBunkerV0
@@ -121,7 +121,7 @@ export const useCollectionInfo = (
   ]);
 };
 
-export const useTeritoriBreedingCollectionInfo = (
+export const useMerlinsBreedingCollectionInfo = (
   networkId: string | undefined,
   enabled?: boolean
 ) => {
@@ -234,7 +234,7 @@ const useCosmosBunkerCollectionInfo = (
   return { info, notFound: isError, refetch };
 };
 
-const useEthereumTeritoriBunkerCollectionInfo = (
+const useEthereumMerlinsBunkerCollectionInfo = (
   networkId: string | undefined,
   mintAddress: string,
   enabled?: boolean

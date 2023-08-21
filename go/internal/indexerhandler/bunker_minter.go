@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/contracts/bunker_minter_types"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/contracts/bunker_minter_types"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
@@ -71,7 +71,7 @@ func (h *Handler) handleInstantiateBunker(e *Message, contractAddress string, in
 		MaxSupply:           maxSupply,
 		SecondaryDuringMint: secondaryDuringMint,
 		Time:                blockTime,
-		TeritoriCollection: &indexerdb.TeritoriCollection{
+		MerlinsCollection: &indexerdb.MerlinsCollection{
 			MintContractAddress: contractAddress,
 			NFTContractAddress:  nftAddr,
 			CreatorAddress:      instantiateMsg.Sender,
@@ -100,7 +100,7 @@ func (h *Handler) handleExecuteMintBunker(e *Message, collection *indexerdb.Coll
 	owner := recipients[0]
 	ownerId := h.config.Network.UserID(owner)
 
-	nftId := h.config.Network.NFTID(collection.TeritoriCollection.MintContractAddress, tokenId)
+	nftId := h.config.Network.NFTID(collection.MerlinsCollection.MintContractAddress, tokenId)
 
 	var mintMsg ExecuteCW721MintMsg
 	if err := json.Unmarshal(execMsg.Msg, &mintMsg); err != nil {
@@ -118,7 +118,7 @@ func (h *Handler) handleExecuteMintBunker(e *Message, collection *indexerdb.Coll
 		ImageURI:     metadata.ImageURL,
 		CollectionID: collection.ID,
 		Attributes:   metadata.Attributes,
-		TeritoriNFT: &indexerdb.TeritoriNFT{
+		MerlinsNFT: &indexerdb.MerlinsNFT{
 			TokenID: tokenId,
 		},
 	}
@@ -176,7 +176,7 @@ func (h *Handler) handleExecuteBunkerUpdateConfig(e *Message, execMsg *wasmtypes
 
 	if len(updates) != 0 {
 		if err := h.db.
-			Model(&indexerdb.TeritoriCollection{}).
+			Model(&indexerdb.MerlinsCollection{}).
 			Where("collection_id = ?", h.config.Network.CollectionID(execMsg.Contract)).
 			UpdateColumns(updates).
 			Error; err != nil {

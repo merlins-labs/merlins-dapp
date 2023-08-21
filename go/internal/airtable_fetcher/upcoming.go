@@ -3,7 +3,7 @@ package airtable_fetcher
 import (
 	"net/url"
 
-	"github.com/TERITORI/teritori-dapp/go/pkg/marketplacepb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/marketplacepb"
 	"github.com/mehanizm/airtable"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"

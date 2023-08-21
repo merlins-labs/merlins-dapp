@@ -1,16 +1,16 @@
-import { TeritoriNameServiceQueryClient } from "../contracts-clients/teritori-name-service/TeritoriNameService.client";
+import { MerlinsNameServiceQueryClient } from "../contracts-clients/merlins-name-service/MerlinsNameService.client";
 import { mustGetNonSigningCosmWasmClient } from "../networks";
-import { teritoriNetwork } from "../networks/teritori";
+import { merlinsNetwork } from "../networks/merlins";
 
 const main = async () => {
-  const network = teritoriNetwork;
+  const network = merlinsNetwork;
   if (!network.nameServiceContractAddress) {
     throw new Error("no name service contract address in network config");
   }
 
   console.log("contract address:", network.nameServiceContractAddress);
 
-  const client = new TeritoriNameServiceQueryClient(
+  const client = new MerlinsNameServiceQueryClient(
     await mustGetNonSigningCosmWasmClient(network.id),
     network.nameServiceContractAddress
   );

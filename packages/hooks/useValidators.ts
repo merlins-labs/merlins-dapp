@@ -146,7 +146,7 @@ const sortByVotingPower = (a: ValidatorInfo, b: ValidatorInfo) =>
 const formatValidators = (vals: ValidatorInfo[]) => {
   let i = 0;
   for (const v of vals) {
-    v.votingPower += " TORI";
+    v.votingPower += " FURY";
     v.rank = (i + 1).toString();
     i++;
   }

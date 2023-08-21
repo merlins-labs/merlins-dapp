@@ -5,6 +5,11 @@ schema {
 scalar BigDecimal
 scalar BigInt
 scalar Bytes
+"""
+8 bytes signed integer
+
+"""
+scalar Int8
 type Action {
   actor: Bytes!
   id: ID!

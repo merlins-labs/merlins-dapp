@@ -41,7 +41,7 @@ export const CreateDAOSection: React.FC<CreateDAOSectionProps> = ({
   const selectedNetwork = useSelectedNetworkInfo();
   const selectedRadioStructure = watch("structure");
   const uri = watch("imageUrl");
-  const name = watch("associatedTeritoriNameService");
+  const name = watch("associatedMerlinsNameService");
 
   // functions
   const onErrorImageLoading = () =>
@@ -55,7 +55,7 @@ export const CreateDAOSection: React.FC<CreateDAOSectionProps> = ({
     <View style={styles.fill}>
       <ScrollView contentContainerStyle={styles.container}>
         <BrandText style={fontSemibold28}>
-          Create a Teritori Organization
+          Create a Merlins Organization
         </BrandText>
         <SpacerColumn size={2} />
         <BrandText style={styles.sectionTitle}>Claim a name</BrandText>
@@ -87,7 +87,7 @@ export const CreateDAOSection: React.FC<CreateDAOSectionProps> = ({
                       ? `: ${name}${
                           selectedNetwork?.kind === NetworkKind.Gno
                             ? ""
-                            : ".tori"
+                            : ".fury"
                         }`
                       : ""
                   }`}
@@ -96,7 +96,7 @@ export const CreateDAOSection: React.FC<CreateDAOSectionProps> = ({
                       ? "your_organization"
                       : "your-organization"
                   }
-                  name="associatedTeritoriNameService"
+                  name="associatedMerlinsNameService"
                   rules={{ required: true }}
                 />
               </View>
@@ -135,7 +135,7 @@ export const CreateDAOSection: React.FC<CreateDAOSectionProps> = ({
             <RadioDescriptionSelector
               selected={selectedRadioStructure === DaoType.MEMBER_BASED}
               onPress={() => setValue("structure", DaoType.MEMBER_BASED)}
-              title="Membership-based TORG - Teritori Organization"
+              title="Membership-based TORG - Merlins Organization"
               description="Small organization with a few members who are likely to stick around. Members can be added and removed by a vote of existing members."
             />
           </View>
@@ -145,7 +145,7 @@ export const CreateDAOSection: React.FC<CreateDAOSectionProps> = ({
               disabled
               selected={selectedRadioStructure === DaoType.TOKEN_BASED}
               onPress={() => setValue("structure", DaoType.TOKEN_BASED)}
-              title="Governance Token-based TORG - Teritori Organization"
+              title="Governance Token-based TORG - Merlins Organization"
               description="Fluid organization with many members who leave and join frequently. Members can join and leave by exchanging governance shares."
             />
           </View>

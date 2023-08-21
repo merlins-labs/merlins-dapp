@@ -7,9 +7,9 @@ import (
 	"time"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/contracts/breeding_minter_types"
-	"github.com/TERITORI/teritori-dapp/go/pkg/p2e"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/contracts/breeding_minter_types"
+	"github.com/MERLINS/merlins-dapp/go/pkg/p2e"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -68,7 +68,7 @@ func (h *Handler) handleInstantiateBreeding(e *Message, contractAddress string, 
 		MaxSupply:           maxSupply,
 		SecondaryDuringMint: true,
 		Time:                blockTime,
-		TeritoriCollection: &indexerdb.TeritoriCollection{
+		MerlinsCollection: &indexerdb.MerlinsCollection{
 			MintContractAddress: contractAddress,
 			NFTContractAddress:  nftAddr,
 			CreatorAddress:      instantiateMsg.Sender,
@@ -179,8 +179,8 @@ func (h *Handler) handleExecuteSquadStake(e *Message, execMsg *wasmtypes.MsgExec
 			SET 
 				locked_on = ?
 			FROM 
-				teritori_collections AS tc,
-				teritori_nfts AS tn 
+				merlins_collections AS tc,
+				merlins_nfts AS tn 
 			WHERE 
 				n.collection_id = tc.collection_id
 				AND tn.nft_id = n.id 
@@ -296,8 +296,8 @@ func (h *Handler) handleExecuteSquadUnstake(e *Message, execMsg *wasmtypes.MsgEx
 			UPDATE nfts AS n
 			SET locked_on = NULL
 			FROM
-				teritori_collections AS tc,
-				teritori_nfts AS tn
+				merlins_collections AS tc,
+				merlins_nfts AS tn
 			WHERE
 				n.collection_id = tc.collection_id
 				AND tn.nft_id = n.id

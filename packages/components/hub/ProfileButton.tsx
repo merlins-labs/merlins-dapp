@@ -60,7 +60,7 @@ export const ProfileButton: React.FC<{
                 screen: "TNSHome",
                 params: {
                   modal: "update-name",
-                  name: metadata.tokenId.replace(".tori", ""),
+                  name: metadata.tokenId.replace(".fury", ""),
                 },
               }
             : { screen: "ComingSoon" }
@@ -126,7 +126,7 @@ export const RegisterButton: React.FC<{
   return null; // MAYBE TODO: fallback?
 };
 
-const gnoNameCost = 200_000_000; // MAYBE TODO: fetch min fee from contract https://testnet.gno.teritori.com/r/demo/users/users.gno
+const gnoNameCost = 200_000_000; // MAYBE TODO: fetch min fee from contract https://testnet.gno.merlins.world/r/demo/users/users.gno
 
 export const RegisterGnoNameModal: React.FC<{
   visible: boolean;

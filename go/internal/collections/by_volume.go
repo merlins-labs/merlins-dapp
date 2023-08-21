@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/Khan/genqlient/graphql"
-	"github.com/TERITORI/teritori-dapp/go/pkg/holagql"
-	"github.com/TERITORI/teritori-dapp/go/pkg/marketplacepb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/holagql"
+	"github.com/MERLINS/merlins-dapp/go/pkg/marketplacepb"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )

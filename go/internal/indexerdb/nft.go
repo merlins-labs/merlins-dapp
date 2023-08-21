@@ -3,7 +3,7 @@ package indexerdb
 import (
 	"database/sql"
 
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
 )
 
 type Attribute struct {
@@ -13,7 +13,7 @@ type Attribute struct {
 
 type NFT struct {
 	// ID is network-dependent
-	// Teritori: tori-<bech32_mint_contract_address>-<token_id>
+	// Merlins: fury-<bech32_mint_contract_address>-<token_id>
 	ID          networks.NFTID
 	Name        string
 	ImageURI    string
@@ -28,7 +28,7 @@ type NFT struct {
 	Collection   *Collection
 
 	// "has one" relations
-	TeritoriNFT *TeritoriNFT
+	MerlinsNFT *MerlinsNFT
 
 	// "has many" relations
 	Activities []Activity
@@ -36,7 +36,7 @@ type NFT struct {
 	Burnt      bool
 }
 
-type TeritoriNFT struct {
+type MerlinsNFT struct {
 	NFTID   string `gorm:"primaryKey"`
 	TokenID string
 }

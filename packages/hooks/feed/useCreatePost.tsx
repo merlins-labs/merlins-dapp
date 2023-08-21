@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { FetchCommentResponse } from "./useFetchComments";
 import { PostResultExtra } from "../../components/socialFeed/NewsFeed/NewsFeed.type";
 import { useFeedbacks } from "../../context/FeedbacksProvider";
-import { useTeritoriSocialFeedCreatePostMutation } from "../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.react-query";
+import { useMerlinsSocialFeedCreatePostMutation } from "../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.react-query";
 import useSelectedWallet from "../useSelectedWallet";
 
 // =============== Used only for Simple Post for now. (Sorry for the mess)
@@ -18,7 +18,7 @@ export const useCreatePost = ({
   const { setToastSuccess, setToastError } = useFeedbacks();
   const queryClient = useQueryClient();
 
-  const request = useTeritoriSocialFeedCreatePostMutation({
+  const request = useMerlinsSocialFeedCreatePostMutation({
     onMutate: (data) => {
       const newComment: PostResultExtra = {
         category: data.msg.category,

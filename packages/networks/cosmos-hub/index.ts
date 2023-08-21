@@ -14,7 +14,7 @@ export const cosmosNetwork: NetworkInfo = {
   contractExplorer: "https://www.mintscan.io/cosmos/account/$address",
   idPrefix: "cosm",
   testnet: false,
-  backendEndpoint: "https://dapp-backend.mainnet.teritori.com",
+  backendEndpoint: "https://dapp-backend.mainnet.merlins.world",
   addressPrefix: "cosmos",
   restEndpoint: "https://api-cosmoshub-ia.cosmosia.notional.ventures",
   rpcEndpoint: "https://rpc-cosmoshub-ia.cosmosia.notional.ventures",

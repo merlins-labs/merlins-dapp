@@ -6,7 +6,7 @@ import { SocialCardHeader } from "./SocialCardHeader";
 import { SocialMessageContent } from "./SocialMessageContent";
 import { Post } from "../../../api/feed/v1/feed";
 import { signingSocialFeedClient } from "../../../client-creators/socialFeedClient";
-import { useTeritoriSocialFeedReactPostMutation } from "../../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.react-query";
+import { useMerlinsSocialFeedReactPostMutation } from "../../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.react-query";
 import { useNSUserInfo } from "../../../hooks/useNSUserInfo";
 import { useSelectedNetworkInfo } from "../../../hooks/useSelectedNetwork";
 import useSelectedWallet from "../../../hooks/useSelectedWallet";
@@ -34,7 +34,7 @@ import { ReplyButton } from "../SocialActions/ReplyButton";
 import { ShareButton } from "../SocialActions/ShareButton";
 import { SocialThreadGovernance } from "../SocialActions/SocialThreadGovernance";
 import { TipButton } from "../SocialActions/TipButton";
-import { GNO_SOCIAL_FEEDS_PKG_PATH, TERITORI_FEED_ID } from "../const";
+import { GNO_SOCIAL_FEEDS_PKG_PATH, MERLINS_FEED_ID } from "../const";
 
 const BREAKPOINT_S = 480;
 
@@ -58,7 +58,7 @@ export const SocialThreadCard: React.FC<{
   const [localPost, setLocalPost] = useState<Post>(post);
   const [viewWidth, setViewWidth] = useState(0);
   const { mutate: postMutate, isLoading: isPostMutationLoading } =
-    useTeritoriSocialFeedReactPostMutation({
+    useMerlinsSocialFeedReactPostMutation({
       onSuccess(_data, variables) {
         const reactions = getUpdatedReactions(
           post.reactions,
@@ -106,7 +106,7 @@ export const SocialThreadCard: React.FC<{
       send: "",
       pkg_path: GNO_SOCIAL_FEEDS_PKG_PATH,
       func: "ReactPost",
-      args: [TERITORI_FEED_ID, localPost.identifier, emoji, "true"],
+      args: [MERLINS_FEED_ID, localPost.identifier, emoji, "true"],
     };
 
     const txHash = await adenaDoContract(

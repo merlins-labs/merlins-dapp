@@ -16,7 +16,7 @@ export const DAppStoreData: React.FC = memo(() => {
       [key: string]: dAppType;
     };
   }
-  const networkId = "teritori"; // there is no difference between the networks
+  const networkId = "merlins"; // there is no difference between the networks
 
   const { data: dApps } = useQuery(
     ["DApps", networkId],

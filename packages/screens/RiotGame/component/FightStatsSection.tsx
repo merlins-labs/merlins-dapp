@@ -49,8 +49,8 @@ export const FightStatsSection: React.FC<FightStatsSectionProps> = ({
               : `Claim available rewards: ${decimalFromAtomics(
                   selectedWallet?.networkId,
                   "" + claimableAmount,
-                  "utori" // FIXME: don't hardcode denom and use prettyPrice
-                )} TORI`
+                  "ufury" // FIXME: don't hardcode denom and use prettyPrice
+                )} FURY`
           }
           touchableStyle={{ marginLeft: layout.padding_x1 }}
           onPress={claimRewards}

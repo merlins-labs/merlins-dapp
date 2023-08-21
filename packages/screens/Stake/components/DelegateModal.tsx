@@ -51,9 +51,9 @@ export const DelegateModal: React.FC<DelegateModalProps> = ({
   const networkId = wallet?.networkId || "";
   const balances = useBalances(networkId, wallet?.address);
   const stakingCurrency = getStakingCurrency(networkId);
-  const toriBalance = balances.find((bal) => bal.denom === "utori");
-  const toriBalanceDecimal = Decimal.fromAtomics(
-    toriBalance?.amount || "0",
+  const furyBalance = balances.find((bal) => bal.denom === "ufury");
+  const furyBalanceDecimal = Decimal.fromAtomics(
+    furyBalance?.amount || "0",
     stakingCurrency?.decimals || 0
   );
   const { control, setValue, handleSubmit, reset } =
@@ -209,11 +209,11 @@ export const DelegateModal: React.FC<DelegateModalProps> = ({
           placeHolder="0"
           currency={keplrCurrencyFromNativeCurrencyInfo(stakingCurrency)}
           defaultValue=""
-          rules={{ required: true, max: toriBalanceDecimal.toString() }}
+          rules={{ required: true, max: furyBalanceDecimal.toString() }}
         >
           <MaxButton
             onPress={() =>
-              setValue("amount", toriBalanceDecimal.toString(), {
+              setValue("amount", furyBalanceDecimal.toString(), {
                 shouldValidate: true,
               })
             }
@@ -225,7 +225,7 @@ export const DelegateModal: React.FC<DelegateModalProps> = ({
           Available balance:{" "}
           {prettyPrice(
             networkId,
-            toriBalanceDecimal.atomics,
+            furyBalanceDecimal.atomics,
             stakingCurrency?.denom || ""
           )}
         </BrandText>

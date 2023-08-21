@@ -11,7 +11,7 @@ import {
 } from "../networks";
 import { Balance } from "../utils/coins";
 import { getEthereumProvider } from "../utils/ethereum";
-import { CosmosBalancesResponse } from "../utils/teritori";
+import { CosmosBalancesResponse } from "../utils/merlins";
 
 export const useBalances = (
   networkId: string | undefined,

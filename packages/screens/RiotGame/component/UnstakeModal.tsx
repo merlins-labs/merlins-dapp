@@ -4,14 +4,14 @@ import { Image, Linking, StyleSheet, View } from "react-native";
 import firePNG from "../../../../assets/game/fire.png";
 import trophiesSVG from "../../../../assets/icons/trophies.svg";
 import twitterSVG from "../../../../assets/icons/twitter.svg";
-import teritoriLogoSVG from "../../../../assets/logos/logo.svg";
+import merlinsLogoSVG from "../../../../assets/logos/logo.svg";
 import { BrandText } from "../../../components/BrandText";
 import FlexRow from "../../../components/FlexRow";
 import { SVG } from "../../../components/SVG";
 import { SocialButton } from "../../../components/buttons/SocialButton";
 import ModalBase from "../../../components/modals/ModalBase";
 import { SpacerColumn, SpacerRow } from "../../../components/spacer";
-import { Squad } from "../../../contracts-clients/teritori-squad-staking/TeritoriSquadStaking.types";
+import { Squad } from "../../../contracts-clients/merlins-squad-staking/MerlinsSquadStaking.types";
 import { useGameRewards } from "../../../hooks/riotGame/useGameRewards";
 import { useNSUserInfo } from "../../../hooks/useNSUserInfo";
 import { useSelectedNetworkId } from "../../../hooks/useSelectedNetwork";
@@ -51,8 +51,8 @@ export const UnstakeModal: React.FC<UnstakeModalProps> = ({
     const twitterShareMessage = `Join The R!ot now ⛩️\nI played and earned ${decimalFromAtomics(
       networkId,
       "" + claimableAmount,
-      "utori"
-    )} $TORI!\nSee you on the battlefield: https://app.teritori.com/riot-game`;
+      "ufury"
+    )} $FURY!\nSee you on the battlefield: https://app.merlins.world/riot-game`;
     const twitterShareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       twitterShareMessage
     )}`;
@@ -93,7 +93,7 @@ export const UnstakeModal: React.FC<UnstakeModalProps> = ({
       }
     >
       <View style={{ alignItems: "center" }}>
-        <SVG width={200} height={200} source={teritoriLogoSVG} />
+        <SVG width={200} height={200} source={merlinsLogoSVG} />
 
         <SpacerColumn size={4} />
 

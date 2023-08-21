@@ -4,7 +4,7 @@ import React from "react";
 import { ComingSoonScreen } from "../../screens/ComingSoon/ComingSoon";
 import { CoreDAOScreen } from "../../screens/CoreDAO/CoreDAOScreen";
 import { DAppStoreScreen } from "../../screens/DAppStore/DAppStoreScreen";
-import { ToriPunks } from "../../screens/DAppStore/apps/toripunks/HomeScreen";
+import { FuryPunks } from "../../screens/DAppStore/apps/furypunks/HomeScreen";
 import { FeedScreen } from "../../screens/Feed/FeedScreen";
 import { FeedNewArticleScreen } from "../../screens/FeedNewArticle/FeedNewArticleScreen";
 import { FeedPostViewScreen } from "../../screens/FeedPostView/FeedPostViewScreen";
@@ -34,14 +34,14 @@ import { RiotersFooterScreen } from "../../screens/RiotersFooter/RiotersFooterSc
 import { SettingsScreen } from "../../screens/Settings/SettingsScreen";
 import { StakeScreen } from "../../screens/Stake";
 import { SwapScreen } from "../../screens/Swap/SwapScreen";
-import { TNSHomeScreen } from "../../screens/TeritoriNameService/TNSHomeScreen";
+import { TNSHomeScreen } from "../../screens/MerlinsNameService/TNSHomeScreen";
 import { UserPublicProfileScreen } from "../../screens/UserPublicProfile/UserPublicProfileScreen";
 import { WalletManagerScreen } from "../../screens/WalletManager/WalletManagerScreen";
 import { WalletManagerWalletsScreen } from "../../screens/WalletManager/WalletsScreen";
 import { RootStackParamList } from "../../utils/navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-export const screenTitle = (title: string) => "Teritori - " + title;
+export const screenTitle = (title: string) => "Merlins - " + title;
 
 export const Navigator: React.FC = () => {
   return (
@@ -208,7 +208,7 @@ export const Navigator: React.FC = () => {
         }}
       />
 
-      {/* ==== Teritori Name Service*/}
+      {/* ==== Merlins Name Service*/}
       <Stack.Screen
         name="TNSHome"
         component={TNSHomeScreen}
@@ -259,7 +259,7 @@ export const Navigator: React.FC = () => {
       <Stack.Screen
         name="FeedPostView"
         component={FeedPostViewScreen}
-        options={{ header: () => null, title: "Teritori" }}
+        options={{ header: () => null, title: "Merlins" }}
       />
       <Stack.Screen
         name="Feed"
@@ -272,9 +272,9 @@ export const Navigator: React.FC = () => {
         options={{ header: () => null, title: screenTitle("") }}
       />
       <Stack.Screen
-        name="ToriPunks"
-        component={ToriPunks}
-        options={{ header: () => null, title: screenTitle("ToriPunks") }}
+        name="FuryPunks"
+        component={FuryPunks}
+        options={{ header: () => null, title: screenTitle("FuryPunks") }}
       />
       <Stack.Screen
         name="DAppStore"

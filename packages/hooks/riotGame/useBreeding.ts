@@ -3,8 +3,8 @@ import { EncodeObject } from "@cosmjs/proto-signing";
 import { isDeliverTxFailure } from "@cosmjs/stargate";
 import { useCallback, useEffect, useState } from "react";
 
-import { ConfigResponse } from "./../../contracts-clients/teritori-breeding/TeritoriBreeding.types";
-import { TeritoriBreedingQueryClient } from "../../contracts-clients/teritori-breeding/TeritoriBreeding.client";
+import { ConfigResponse } from "./../../contracts-clients/merlins-breeding/MerlinsBreeding.types";
+import { MerlinsBreedingQueryClient } from "../../contracts-clients/merlins-breeding/MerlinsBreeding.client";
 import {
   getCosmosNetwork,
   getKeplrSigningCosmWasmClient,
@@ -31,7 +31,7 @@ export const useBreeding = (networkId: string | undefined) => {
       throw new Error("no breeding contract address");
     }
     const nonSigningClient = await mustGetNonSigningCosmWasmClient(networkId);
-    return new TeritoriBreedingQueryClient(
+    return new MerlinsBreedingQueryClient(
       nonSigningClient,
       breedingContractAddress
     );

@@ -14,7 +14,7 @@ export const junoNetwork: NetworkInfo = {
   contractExplorer: "https://www.mintscan.io/juno/account/$address",
   idPrefix: "juno",
   testnet: false,
-  backendEndpoint: "https://dapp-backend.mainnet.teritori.com",
+  backendEndpoint: "https://dapp-backend.mainnet.merlins.world",
   addressPrefix: "juno",
   restEndpoint: "https://lcd-juno.keplr.app",
   rpcEndpoint: "https://rpc-juno.keplr.app",

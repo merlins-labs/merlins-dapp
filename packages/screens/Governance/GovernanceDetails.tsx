@@ -98,7 +98,7 @@ export const GovernanceDetails: React.FC<{
     if (!selectedWallet?.connected || !selectedWallet.address) {
       setToastError({
         title: "Wallet Error",
-        message: "You need to register your teritori wallet",
+        message: "You need to register your merlins wallet",
       });
       return;
     }

@@ -114,7 +114,7 @@ export const UPPIntro: React.FC<{
         ) : (
           <SecondaryButtonOutline
             touchableStyle={{ position: "absolute", right: 0, bottom: -80 }}
-            text="Follow this Teritori"
+            text="Follow this Merlins"
             size="XL"
             backgroundColor={neutral00}
             disabled

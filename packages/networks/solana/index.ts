@@ -12,7 +12,7 @@ export const solanaNetwork: NetworkInfo = {
   contractExplorer: "TODO",
   idPrefix: "sol",
   testnet: false,
-  backendEndpoint: "https://dapp-backend.mainnet.teritori.com",
+  backendEndpoint: "https://dapp-backend.mainnet.merlins.world",
   holaplexGraphqlEndpoint: "",
   vaultContractAddress: "",
 };

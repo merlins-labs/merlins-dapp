@@ -3,7 +3,7 @@ package indexerdb
 import (
 	"time"
 
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
 )
 
 type ActivityKind string
@@ -22,7 +22,7 @@ const (
 
 type Activity struct {
 	// ID is network-dependent
-	// Teritori: tori-<tx_hash>-<msg_index>
+	// Merlins: fury-<tx_hash>-<msg_index>
 	ID   networks.ActivityID
 	Kind ActivityKind `gorm:"index"`
 	Time time.Time    `gorm:"index"`

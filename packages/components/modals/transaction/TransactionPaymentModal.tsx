@@ -15,7 +15,7 @@ import { ConnectKeplrButton } from "../../connectWallet/ConnectKeplrButton";
 import { ConnectMetamaskButton } from "../../connectWallet/ConnectMetamaskButton";
 import ModalBase from "../ModalBase";
 
-// Modal with price, fee,  Teritori wallet connexion and status and Payment button
+// Modal with price, fee,  Merlins wallet connexion and status and Payment button
 export const TransactionPaymentModal: React.FC<{
   label: string;
   nftId: string;

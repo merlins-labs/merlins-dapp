@@ -120,7 +120,7 @@ const NftAdjustments: React.FC<{
             {prettyPrice(
               networkId,
               price?.toString() || "",
-              "utori" // FIXME: don't hardcode
+              "ufury" // FIXME: don't hardcode
             )}
           </BrandText>
         </View>

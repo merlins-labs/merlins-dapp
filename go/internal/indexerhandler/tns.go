@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
@@ -36,7 +36,7 @@ func (h *Handler) handleInstantiateTNS(e *Message, contractAddress string, insta
 		MaxSupply:           -1,
 		SecondaryDuringMint: true,
 		Time:                blockTime,
-		TeritoriCollection: &indexerdb.TeritoriCollection{
+		MerlinsCollection: &indexerdb.MerlinsCollection{
 			MintContractAddress: contractAddress,
 			NFTContractAddress:  contractAddress,
 			CreatorAddress:      tnsInstantiateMsg.AdminAddress,
@@ -74,7 +74,7 @@ func (h *Handler) handleExecuteMintTNS(e *Message, collection *indexerdb.Collect
 	minter := execMsg.Sender
 	ownerId := h.config.Network.UserID(minter)
 	tokenId = strings.ToLower(tokenId) // mint action in name service contract emits non-normalized token id in events
-	nftId := h.config.Network.NFTID(collection.TeritoriCollection.MintContractAddress, tokenId)
+	nftId := h.config.Network.NFTID(collection.MerlinsCollection.MintContractAddress, tokenId)
 
 	// get image URI
 	var executePayload ExecuteCW721MintMsg
@@ -97,7 +97,7 @@ func (h *Handler) handleExecuteMintTNS(e *Message, collection *indexerdb.Collect
 		Name:         tokenId,
 		ImageURI:     imageURI,
 		CollectionID: collection.ID,
-		TeritoriNFT: &indexerdb.TeritoriNFT{
+		MerlinsNFT: &indexerdb.MerlinsNFT{
 			TokenID: tokenId,
 		},
 	}
@@ -209,7 +209,7 @@ func (h *Handler) handleExecuteTNSSetAdminAddress(e *Message, execMsg *wasmtypes
 	}
 
 	if err := h.db.
-		Model(&indexerdb.TeritoriCollection{}).
+		Model(&indexerdb.MerlinsCollection{}).
 		Where("collection_id = ?", h.config.Network.CollectionID(execMsg.Contract)).
 		UpdateColumn("CreatorAddress", msg.Payload.AdminAddress).
 		Error; err != nil {

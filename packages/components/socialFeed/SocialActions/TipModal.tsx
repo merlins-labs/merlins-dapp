@@ -6,7 +6,7 @@ import { View } from "react-native";
 
 import { signingSocialFeedClient } from "../../../client-creators/socialFeedClient";
 import { useFeedbacks } from "../../../context/FeedbacksProvider";
-import { useTeritoriSocialFeedTipPostMutation } from "../../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.react-query";
+import { useMerlinsSocialFeedTipPostMutation } from "../../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.react-query";
 import { useBalances } from "../../../hooks/useBalances";
 import { useSelectedNetworkId } from "../../../hooks/useSelectedNetwork";
 import useSelectedWallet from "../../../hooks/useSelectedWallet";
@@ -42,7 +42,7 @@ export const TipModal: React.FC<{
     watch,
   } = useForm<TipFormType>();
   const { mutate: postMutate, isLoading } =
-    useTeritoriSocialFeedTipPostMutation({
+    useMerlinsSocialFeedTipPostMutation({
       onSuccess() {
         onClose();
         setToastSuccess({ title: "Tip success", message: "" });

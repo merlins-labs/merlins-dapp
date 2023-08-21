@@ -12,8 +12,8 @@ import {
 import { SocialCardHeader } from "./SocialCardHeader";
 import { SocialMessageContent } from "./SocialMessageContent";
 import { signingSocialFeedClient } from "../../../client-creators/socialFeedClient";
-import { useTeritoriSocialFeedReactPostMutation } from "../../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.react-query";
-import { Reaction as ReactionFromContract } from "../../../contracts-clients/teritori-social-feed/TeritoriSocialFeed.types";
+import { useMerlinsSocialFeedReactPostMutation } from "../../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.react-query";
+import { Reaction as ReactionFromContract } from "../../../contracts-clients/merlins-social-feed/MerlinsSocialFeed.types";
 import {
   combineFetchCommentPages,
   useFetchComments,
@@ -58,7 +58,7 @@ import { nbReactionsShown, Reactions } from "../SocialActions/Reactions";
 import { ReplyButton } from "../SocialActions/ReplyButton";
 import { ShareButton } from "../SocialActions/ShareButton";
 import { TipButton } from "../SocialActions/TipButton";
-import { GNO_SOCIAL_FEEDS_PKG_PATH, TERITORI_FEED_ID } from "../const";
+import { GNO_SOCIAL_FEEDS_PKG_PATH, MERLINS_FEED_ID } from "../const";
 
 const BREAKPOINT_S = 480;
 
@@ -105,7 +105,7 @@ export const SocialCommentCard: React.FC<SocialCommentCardProps> = ({
   const oldIsFetching = usePrevious(isFetching);
 
   const { mutate: postMutate, isLoading: isPostMutationLoading } =
-    useTeritoriSocialFeedReactPostMutation({
+    useMerlinsSocialFeedReactPostMutation({
       onSuccess(_data, variables) {
         const reactions = getUpdatedReactions(
           localComment.reactions,
@@ -189,7 +189,7 @@ export const SocialCommentCard: React.FC<SocialCommentCardProps> = ({
       send: "",
       pkg_path: GNO_SOCIAL_FEEDS_PKG_PATH,
       func: "ReactPost",
-      args: [TERITORI_FEED_ID, localComment.identifier, icon, "true"],
+      args: [MERLINS_FEED_ID, localComment.identifier, icon, "true"],
     };
 
     const txHash = await adenaDoContract(

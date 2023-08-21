@@ -34,7 +34,7 @@ export const GnoDemo: React.FC<{
       <SpacerColumn size={4} />
       <DeletePost daoId={daoId} />
       <SpacerColumn size={4} />
-      <MintTori daoId={daoId} />
+      <MintFury daoId={daoId} />
       <ConfigureVotingSection
         onSubmit={async (form) =>
           wrapWithFeedback(async () => {
@@ -221,7 +221,7 @@ const CreateBoard: React.FC<{ daoId: string }> = ({ daoId }) => {
   );
 };
 
-const MintTori: React.FC<{ daoId: string }> = ({ daoId }) => {
+const MintFury: React.FC<{ daoId: string }> = ({ daoId }) => {
   const [network, daoAddress] = parseUserId(daoId);
   const wallet = useSelectedWallet();
   const { wrapWithFeedback } = useFeedbacks();
@@ -231,7 +231,7 @@ const MintTori: React.FC<{ daoId: string }> = ({ daoId }) => {
   if (network?.kind !== NetworkKind.Gno || !wallet) return null;
   return (
     <View>
-      <BrandText style={fontSemibold20}>Mint Tori</BrandText>
+      <BrandText style={fontSemibold20}>Mint Fury</BrandText>
       <SpacerColumn size={2} />
       <TextInputCustom
         label="Amount"
@@ -253,13 +253,13 @@ const MintTori: React.FC<{ daoId: string }> = ({ daoId }) => {
         text="Propose mint"
         loader
         onPress={wrapWithFeedback(async () => {
-          const msg = toRawURLBase64String(encodeMintTori(amount, recipient));
+          const msg = toRawURLBase64String(encodeMintFury(amount, recipient));
           await adenaVMCall(network.id, {
             pkg_path: daoAddress,
             func: "Propose",
             caller: wallet.address,
             send: "",
-            args: ["0", `Mint ${amount} Tori to ${recipient}`, "", msg],
+            args: ["0", `Mint ${amount} Fury to ${recipient}`, "", msg],
           });
         })}
       />
@@ -412,11 +412,11 @@ const encodeUpdateSettings = (threshold: number, quorum: number) => {
   return Buffer.from(b.subarray(0, offset));
 };
 
-const encodeMintTori = (amount: string, recipient: string) => {
+const encodeMintFury = (amount: string, recipient: string) => {
   const b = Buffer.alloc(16000); // TODO: compute size or concat
   let offset = 0;
 
-  const t = "MintTori";
+  const t = "MintFury";
   b.writeUInt16BE(t.length, offset);
   offset += 2;
   b.write(t, offset);

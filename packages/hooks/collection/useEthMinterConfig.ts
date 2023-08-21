@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { TeritoriMinter__factory } from "../../evm-contracts-clients/teritori-bunker-minter/TeritoriMinter__factory";
+import { MerlinsMinter__factory } from "../../evm-contracts-clients/merlins-bunker-minter/MerlinsMinter__factory";
 import { NetworkKind, getNetwork } from "../../networks";
 import { getEthereumProvider } from "../../utils/ethereum";
 
@@ -29,7 +29,7 @@ export const useEthMinterConfig = (
         return undefined;
       }
 
-      const minterClient = TeritoriMinter__factory.connect(
+      const minterClient = MerlinsMinter__factory.connect(
         mintAddress,
         provider
       );

@@ -1,19 +1,19 @@
 import Long from "long";
 
 import { mustGetNodeMarketplaceClient } from "./lib";
-import { TeritoriBunkerMinterQueryClient } from "../contracts-clients/teritori-bunker-minter/TeritoriBunkerMinter.client";
+import { MerlinsBunkerMinterQueryClient } from "../contracts-clients/merlins-bunker-minter/MerlinsBunkerMinter.client";
 import {
   mustGetNonSigningCosmWasmClient,
   parseNetworkObjectId,
 } from "../networks";
-import { teritoriNetwork } from "../networks/teritori";
+import { merlinsNetwork } from "../networks/merlins";
 
 const main = async () => {
-  const backendClient = mustGetNodeMarketplaceClient(teritoriNetwork.id);
+  const backendClient = mustGetNodeMarketplaceClient(merlinsNetwork.id);
   const srv = backendClient.Collections({
     limit: 100,
     offset: 0,
-    networkId: teritoriNetwork.id,
+    networkId: merlinsNetwork.id,
   });
   await srv.forEach(async ({ collection }) => {
     if (!collection) {
@@ -30,7 +30,7 @@ const main = async () => {
         const comswasmClient = await mustGetNonSigningCosmWasmClient(
           network.id
         );
-        const bunkerClient = new TeritoriBunkerMinterQueryClient(
+        const bunkerClient = new MerlinsBunkerMinterQueryClient(
           comswasmClient,
           mintAddress
         );

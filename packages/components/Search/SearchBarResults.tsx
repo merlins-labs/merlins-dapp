@@ -32,7 +32,7 @@ export const SearchBarResults: FC = () => {
     <>
       {hasNames && (
         <SearchResultsSection
-          title="Teritori Name Service"
+          title="Merlins Name Service"
           style={{ width: "100%" }}
           isFirstSection
         >

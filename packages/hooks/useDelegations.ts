@@ -10,7 +10,7 @@ import {
   NetworkKind,
 } from "../networks";
 import { Balance } from "../utils/coins";
-import { CosmosDelegationsResponse } from "../utils/teritori";
+import { CosmosDelegationsResponse } from "../utils/merlins";
 
 const initialData = { delegation_responses: [] };
 

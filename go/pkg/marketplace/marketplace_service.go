@@ -8,12 +8,12 @@ import (
 	"time"
 
 	"github.com/Khan/genqlient/graphql"
-	"github.com/TERITORI/teritori-dapp/go/internal/airtable_fetcher"
-	"github.com/TERITORI/teritori-dapp/go/internal/ethereum"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/holagql"
-	"github.com/TERITORI/teritori-dapp/go/pkg/marketplacepb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/internal/airtable_fetcher"
+	"github.com/MERLINS/merlins-dapp/go/internal/ethereum"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/holagql"
+	"github.com/MERLINS/merlins-dapp/go/pkg/marketplacepb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
 	"github.com/bxcodec/faker/v3"
 	"github.com/pkg/errors"
 	"github.com/volatiletech/sqlboiler/v4/queries"
@@ -147,7 +147,7 @@ func (s *MarkteplaceService) Collections(req *marketplacepb.CollectionsRequest, 
 		orderSQL := ""
 		switch req.GetSort() {
 		case marketplacepb.Sort_SORT_PRICE:
-			where = where + "AND tc.denom = utori" // not mixed denoms allowed !
+			where = where + "AND tc.denom = ufury" // not mixed denoms allowed !
 			orderSQL = "tc.price" + orderDirection
 		case marketplacepb.Sort_SORT_VOLUME:
 			orderSQL = "case when total_volume is null then 1 else 0 end, total_volume " + orderDirection
@@ -163,14 +163,14 @@ func (s *MarkteplaceService) Collections(req *marketplacepb.CollectionsRequest, 
 			WITH count_by_collection AS (
 				SELECT count(1), collection_id FROM nfts GROUP BY nfts.collection_id
 			),
-			tori_collections AS (
+			fury_collections AS (
 				SELECT c.*, tc.* FROM collections AS c
-				INNER JOIN teritori_collections tc ON tc.collection_id = c.id
+				INNER JOIN merlins_collections tc ON tc.collection_id = c.id
 				%s
 				AND tc.mint_contract_address IN ?
 			),
 			nft_by_collection AS (
-				SELECT  tc.id,n.id  nft_id  FROM tori_collections AS tc
+				SELECT  tc.id,n.id  nft_id  FROM fury_collections AS tc
 				INNER JOIN nfts AS n ON tc.id = n.collection_id
 			),
 			activities_on_period AS (
@@ -190,7 +190,7 @@ func (s *MarkteplaceService) Collections(req *marketplacepb.CollectionsRequest, 
      trades_by_collection_historic AS (
          select COALESCE(sum(cast(t.price as float8)),0) as total_volume, COALESCE(sum(t.usd_price),0) as total_volume_usd, c.id, count(*) num_trades
          FROM trades t join activities a on a.id = t.activity_id
-                       join teritori_collections tc on split_part(a.nft_id,'-',2)=tc.mint_contract_address
+                       join merlins_collections tc on split_part(a.nft_id,'-',2)=tc.mint_contract_address
                        join collections c on c.id = tc.collection_id
          group by c.id),
      current_num_owners AS (
@@ -211,7 +211,7 @@ func (s *MarkteplaceService) Collections(req *marketplacepb.CollectionsRequest, 
       SELECT tc.*, COALESCE((SELECT tbc.volume FROM trades_by_collection tbc WHERE tbc.id = tc.id), 0) volume,
          total_volume, floor_price, num_trades, num_owners, 
        COALESCE((SELECT tcc.volume FROM trades_by_collection_comparision tcc WHERE tcc.id = tc.id), 0) volume_compare
-      FROM tori_collections tc
+      FROM fury_collections tc
       left join trades_by_collection_historic tch on tc.id = tch.id
       left join current_num_owners on tc.collection_id = current_num_owners.collection_id
 			ORDER BY %s
@@ -382,9 +382,9 @@ func (s *MarkteplaceService) NFTs(req *marketplacepb.NFTsRequest, srv marketplac
 
 	case *networks.CosmosNetwork:
 		query := s.conf.IndexerDB.
-			Preload("TeritoriNFT").
+			Preload("MerlinsNFT").
 			Preload("Collection").
-			Preload("Collection.TeritoriCollection").
+			Preload("Collection.MerlinsCollection").
 			Where("burnt = ?", false).
 			Offset(int(offset)).
 			Limit(int(limit)).
@@ -493,7 +493,7 @@ func (s *MarkteplaceService) NFTs(req *marketplacepb.NFTsRequest, srv marketplac
 				TextInsert:         textInsert,
 				OwnerId:            string(nft.OwnerID),
 				Attributes:         attributes,
-				NftContractAddress: nft.Collection.TeritoriCollection.NFTContractAddress,
+				NftContractAddress: nft.Collection.MerlinsCollection.NFTContractAddress,
 				LockedOn:           nft.LockedOn,
 			}}); err != nil {
 				return errors.Wrap(err, "failed to send nft")
@@ -744,7 +744,7 @@ func (s *MarkteplaceService) Activity(req *marketplacepb.ActivityRequest, srv ma
 				TransactionKind: string(activity.Kind),
 				TargetName:      activity.NFT.Name,
 				TargetImageUri:  activity.NFT.ImageURI,
-				ContractName:    "ToriVault",
+				ContractName:    "FuryVault",
 				Time:            activity.Time.Format(time.RFC3339),
 				Amount:          price,
 				Denom:           denom,
@@ -973,19 +973,19 @@ func (s *MarkteplaceService) SearchNames(ctx context.Context, req *marketplacepb
 		collectionID := network.CollectionID(network.NameServiceContractAddress)
 		var nfts []indexerdb.NFT
 		if err := s.conf.IndexerDB.
-			Preload("TeritoriNFT").
-			Joins("JOIN teritori_nfts ON teritori_nfts.nft_id = nfts.id").
-			Where("teritori_nfts.token_id ~* ? AND nfts.collection_id = ? AND nfts.burnt = false", req.Input, collectionID).
+			Preload("MerlinsNFT").
+			Joins("JOIN merlins_nfts ON merlins_nfts.nft_id = nfts.id").
+			Where("merlins_nfts.token_id ~* ? AND nfts.collection_id = ? AND nfts.burnt = false", req.Input, collectionID).
 			Limit(int(limit)).
 			Find(&nfts).Error; err != nil {
 			return nil, errors.Wrap(err, "failed to read nfts in db")
 		}
 		for _, nft := range nfts {
-			if nft.TeritoriNFT == nil {
+			if nft.MerlinsNFT == nil {
 				s.conf.Logger.Debug("failed to get nft token id")
 				continue
 			}
-			names = append(names, nft.TeritoriNFT.TokenID)
+			names = append(names, nft.MerlinsNFT.TokenID)
 		}
 	}
 
@@ -1025,10 +1025,10 @@ func (s *MarkteplaceService) SearchCollections(ctx context.Context, req *marketp
 
 	var collections []indexerdb.Collection
 	if err := s.conf.IndexerDB.
-		Preload("TeritoriCollection").
-		Joins("JOIN teritori_collections ON teritori_collections.collection_id = collections.id").
+		Preload("MerlinsCollection").
+		Joins("JOIN merlins_collections ON merlins_collections.collection_id = collections.id").
 		Where("name ~* ?", req.Input).
-		Where("teritori_collections.mint_contract_address IN ?", s.conf.Whitelist).
+		Where("merlins_collections.mint_contract_address IN ?", s.conf.Whitelist).
 		Limit(int(limit)).
 		Find(&collections).Error; err != nil {
 		return nil, errors.Wrap(err, "failed to read db")
@@ -1048,9 +1048,9 @@ func (s *MarkteplaceService) SearchCollections(ctx context.Context, req *marketp
 			NetworkId:           c.NetworkId,
 			SecondaryDuringMint: c.SecondaryDuringMint,
 		}
-		if c.TeritoriCollection != nil {
-			nc.CreatorId = string(network.GetBase().UserID(c.TeritoriCollection.CreatorAddress))
-			nc.MintAddress = c.TeritoriCollection.MintContractAddress
+		if c.MerlinsCollection != nil {
+			nc.CreatorId = string(network.GetBase().UserID(c.MerlinsCollection.CreatorAddress))
+			nc.MintAddress = c.MerlinsCollection.MintContractAddress
 		}
 		pbCollections = append(pbCollections, nc)
 	}

@@ -6,9 +6,9 @@ import { Wallet } from "./../context/WalletsProvider/wallet";
 import { getMetaMaskEthereumSigner } from "./../utils/ethereum";
 import useSelectedWallet from "./useSelectedWallet";
 import { initialToastError, useFeedbacks } from "../context/FeedbacksProvider";
-import { TeritoriNftClient } from "../contracts-clients/teritori-nft/TeritoriNft.client";
-import { TeritoriNft__factory } from "../evm-contracts-clients/teritori-nft/TeritoriNft__factory";
-import { NFTVault__factory } from "../evm-contracts-clients/teritori-nft-vault/NFTVault__factory";
+import { MerlinsNftClient } from "../contracts-clients/merlins-nft/MerlinsNft.client";
+import { MerlinsNft__factory } from "../evm-contracts-clients/merlins-nft/MerlinsNft__factory";
+import { NFTVault__factory } from "../evm-contracts-clients/merlins-nft-vault/NFTVault__factory";
 import {
   getKeplrSigningCosmWasmClient,
   getNativeCurrency,
@@ -18,7 +18,7 @@ import {
   NetworkKind,
 } from "../networks";
 
-const teritoriSellNFT = async (
+const merlinsSellNFT = async (
   wallet: Wallet,
   nftContractAddress: string,
   tokenId: string,
@@ -30,7 +30,7 @@ const teritoriSellNFT = async (
     throw new Error("network not supported");
   }
   const cosmwasmClient = await getKeplrSigningCosmWasmClient(network.id);
-  const nftClient = new TeritoriNftClient(
+  const nftClient = new MerlinsNftClient(
     cosmwasmClient,
     wallet.address,
     nftContractAddress
@@ -77,7 +77,7 @@ const ethereumSellNFT = async (
   const txFeeData = { maxFeePerGas, maxPriorityFeePerGas };
 
   // Approve
-  const nftClient = TeritoriNft__factory.connect(nftContractAddress, signer);
+  const nftClient = MerlinsNft__factory.connect(nftContractAddress, signer);
 
   const approveTx = await nftClient.approve(
     network.vaultContractAddress,
@@ -129,7 +129,7 @@ export const useSellNFT = (networkKind: NetworkKind | undefined) => {
         let sellNFTFunc;
         switch (networkKind) {
           case NetworkKind.Cosmos:
-            sellNFTFunc = teritoriSellNFT;
+            sellNFTFunc = merlinsSellNFT;
             break;
           case NetworkKind.Ethereum:
             sellNFTFunc = ethereumSellNFT;

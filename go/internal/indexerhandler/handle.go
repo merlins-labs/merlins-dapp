@@ -6,10 +6,10 @@ import (
 	"time"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/TERITORI/teritori-dapp/go/internal/indexerdb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/networks"
-	"github.com/TERITORI/teritori-dapp/go/pkg/pricespb"
-	"github.com/TERITORI/teritori-dapp/go/pkg/tmws"
+	"github.com/MERLINS/merlins-dapp/go/internal/indexerdb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/networks"
+	"github.com/MERLINS/merlins-dapp/go/pkg/pricespb"
+	"github.com/MERLINS/merlins-dapp/go/pkg/tmws"
 	"github.com/allegro/bigcache/v3"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	cosmostx "github.com/cosmos/cosmos-sdk/types/tx"
@@ -298,7 +298,7 @@ func (h *Handler) handleExecuteMint(e *Message, execMsg *wasmtypes.MsgExecuteCon
 	contractAddress := execMsg.Contract
 
 	var collections []*indexerdb.Collection
-	if err := h.db.Preload("TeritoriCollection").Limit(1).Find(&collections, &indexerdb.Collection{ID: h.config.Network.CollectionID(contractAddress)}).Error; err != nil {
+	if err := h.db.Preload("MerlinsCollection").Limit(1).Find(&collections, &indexerdb.Collection{ID: h.config.Network.CollectionID(contractAddress)}).Error; err != nil {
 		return errors.Wrap(err, "find collection error")
 	}
 	if len(collections) == 0 {
@@ -306,8 +306,8 @@ func (h *Handler) handleExecuteMint(e *Message, execMsg *wasmtypes.MsgExecuteCon
 		return nil
 	}
 	collection := collections[0]
-	if collection.TeritoriCollection == nil {
-		return errors.New("no teritori info in collection")
+	if collection.MerlinsCollection == nil {
+		return errors.New("no merlins info in collection")
 	}
 
 	// FIXME: do message analysis instead of events
@@ -318,7 +318,7 @@ func (h *Handler) handleExecuteMint(e *Message, execMsg *wasmtypes.MsgExecuteCon
 	}
 	tokenId := tokenIds[0]
 
-	if collection.TeritoriCollection != nil && collection.TeritoriCollection.MintContractAddress == h.config.Network.NameServiceContractAddress {
+	if collection.MerlinsCollection != nil && collection.MerlinsCollection.MintContractAddress == h.config.Network.NameServiceContractAddress {
 		if err := h.handleExecuteMintTNS(e, collection, tokenId, execMsg); err != nil {
 			return errors.Wrap(err, "failed to handle tns mint")
 		}
